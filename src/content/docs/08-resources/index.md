@@ -5,16 +5,25 @@ sidebar:
   order: 0
 ---
 
-> 收集常用网站与学习资源，持续补充。
+外链与日历放这里，避免正文里堆链接。
+
+## 本站已整理
+
+- [展会日历（储能相关）](./exhibitions/) — 来自岗位说明书附录
 
 ## 行业学习资源
 
-- [Breakbulk & Project Cargo（Breakbulk 官网）](https://breakbulk.com/)
-- [Project Cargo Guides & Resources — EAN Networks](https://ean-network.com/knowledge-base)
-- [Project, OOG & Breakbulk Cargo Shipping Guide](https://blog.gettransport.com/logistics-guide/project-oog-breakbulk-cargo-shipping-guide-2026/)
+- [Breakbulk 官网](https://breakbulk.com/)
+- [Project Cargo Guides — EAN Networks](https://ean-network.com/knowledge-base)
+- [Project, OOG & Breakbulk Shipping Guide](https://blog.gettransport.com/logistics-guide/project-oog-breakbulk-cargo-shipping-guide-2026/)
 
-## 待补充
+## 待逐步补的速查
 
-- 船公司 / 港口 / 海关官网速查表；
-- 华南港口航线速查表；
-- 展会日历（国内 / 东盟储能柜展会，见岗位说明书附录）。
+| 类型 | 方向 | 状态 |
+|---|---|---|
+| 船东查询 | 主要船公司 cargo 工具 | 待补 |
+| 港口 | 盐田、蛇口、南沙、新加坡等 | 待补 |
+| 海关 | 中国海关 / 单一窗口 | 待补 |
+| 危险品 | IMDG 公开说明、正规培训入口 | 待补 |
+
+补链接时注明「官方/第三方」与最后核对日期。
