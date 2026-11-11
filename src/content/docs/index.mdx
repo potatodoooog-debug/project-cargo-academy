@@ -1,0 +1,44 @@
+---
+title: 工程物流项目经理学习站
+description: 面向工程物流 / 项目货（Project Cargo）新人的可持续迭代学习资料
+template: splash
+hero:
+  title: 工程物流项目经理学习站
+  tagline: 面向 Project Cargo 新人的可持续迭代学习地图，从零到能上手。
+  actions:
+    - text: 开始学习
+      link: 00-overview/
+      icon: right-arrow
+    - text: GitHub 仓库
+      link: https://github.com/potatodoooog-debug/project-cargo-academy
+      icon: github
+      variant: minimal
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## 学习地图
+
+按顺序学习 8 个模块，即可建立岗位认知与可上手的能力框架。每个模块正文为中文，关键术语附英文对照。
+
+<CardGrid>
+  <LinkCard title="00 岗位认知与学习地图" description="搞清楚这个岗位到底是什么：销售 + BD，而不是传统意义上的项目经理。" href="00-overview/" />
+  <LinkCard title="01 国际贸易与物流基础" description="Incoterms、国际物流链路、基础单证与付款方式。" href="01-trade-basics/" />
+  <LinkCard title="02 货代业务" description="货运代理角色与流程、集装箱类型、华南港口与航线。" href="02-freight-forwarding/" />
+  <LinkCard title="03 工程物流核心" description="Breakbulk、OOG、Heavy Lift、特种柜与绑扎加固。" href="03-project-cargo/" />
+  <LinkCard title="04 储能柜出海专题" description="储能柜产品、锂电池危险品规则、出口认证与目标市场。" href="04-energy-storage/" />
+  <LinkCard title="05 商务与销售" description="客户开发、报价、招投标与客户关系维护。" href="05-sales-business/" />
+  <LinkCard title="06 英语与术语" description="行业英文术语表、邮件模板与电话会议用语。" href="06-english-terms/" />
+  <LinkCard title="07 案例库" description="项目复盘、全流程 checklist 与展会记录（持续迭代）。" href="07-case-library/" />
+  <LinkCard title="08 资源与工具" description="船公司 / 港口 / 海关官网、行业媒体与展会日历。" href="08-resources/" />
+</CardGrid>
+
+## 如何使用本学习站
+
+1. **按模块顺序学习**：00 → 01 → 02 是入门必修，03、04 是专业核心，05、06 贯穿始终。
+2. **学一点、补一篇**：每学到一个新知识点，就在对应模块新增一篇 Markdown 并提交，站点会自动更新。
+3. **术语对照**：正文中文，括号内附英文术语，逐步积累行业英文能力。
+
+## 迭代约定
+
+本仓库采用「内容即代码」：`src/content/docs/` 下的 Markdown 文件是唯一内容来源，`git push` 后由 GitHub Actions 自动构建部署，无需手工操作。
