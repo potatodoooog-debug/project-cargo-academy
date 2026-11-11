@@ -21,4 +21,4 @@ sidebar:
 
 - [岗位本质：销售 + BD，不是传统项目经理](./role-reality/)
 - [职业路径与 KPI](./career-path/)
-- [12 周学习计划](./study-plan/)
+- [新人 12 周上手计划](./learning-plan/)
