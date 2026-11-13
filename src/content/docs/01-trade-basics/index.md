@@ -24,3 +24,4 @@ sidebar:
 - [国际物流全链路](./logistics-chain/)
 - [基础单证](./documents/)
 - [付款方式：T/T 与 L/C](./payment/)
+- [2 类危险品：气体](./dg-class-2/)

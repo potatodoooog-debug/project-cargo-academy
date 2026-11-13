@@ -18,10 +18,13 @@ sidebar:
 
 ## 推荐阅读顺序
 
-1. [Breakbulk 与 OOG 基础](./bbk-oog-basics/) — **先读**  
-2. [特种柜 FR / OT / Platform](./special-containers/)  
-3. [绑扎加固与公路段](./lashing-and-road/)  
-4. [项目运输方案怎么讲](./solution-framing/)  
+1. [Breakbulk 与 OOG 基础](./bbk-oog-basics/) — **先读**
+2. [特种柜 FR / OT / Platform](./special-containers/)
+3. [件杂货询盘与计费](./bbk-inquiry/)
+4. [绑扎加固与公路段](./lashing-and-road/)
+5. [件杂港口操作](./port-ops/)
+6. [滚装与车辆](./roro/)
+7. [项目运输方案怎么讲](./solution-framing/)
 
 ## 与培训清单的对应
 
@@ -29,7 +32,7 @@ sidebar:
 
 | 培训项 | 本站落点 |
 |---|---|
-| Breakbulk 业务 | bbk-oog-basics |
+| Breakbulk 业务 | bbk-oog-basics + bbk-inquiry |
 | OOG/BBK 业务 | bbk-oog-basics + special-containers |
 | 拜访船公司 | 结合 08 资源，用本模块问题清单去问 |
 | 铁路公路供应商 | lashing-and-road |
@@ -37,9 +40,8 @@ sidebar:
 
 ## 待继续补充（迭代池）
 
-- 计费吨 / 重量吨 / 体积吨在件杂中的用法  
-- 重吊船与半潜船认知  
-- 风电 / 轨交 / 石化模块等细分货种卡片  
-- 保险（ICC + 重大件加费）基础  
+- 半潜船认知
+- 风电 / 轨交 / 石化模块等细分货种卡片
+- 保险（ICC + 重大件加费）基础
 
 有实战就往 [案例库](../07-case-library/) 写一篇，比空读更快。

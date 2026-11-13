@@ -35,6 +35,27 @@ sidebar:
 | Platform | 平板柜 |
 | Lashing & Securing | 绑扎与加固 |
 | Lifting Point | 吊点 |
+| IG（in gauge） | 柜内尺寸 |
+| OH（over height） | 超高 |
+| OW（over width） | 超宽 |
+| OL（over length） | 超长 |
+| panels up / panels down | 挡板竖起 / 挡板放下 |
+| under deck / on deck | 舱内 / 甲板 |
+| Mafi | 滚装拖车 / 滚卸设备 |
+
+## 操作与报价
+
+| 英文 | 中文 |
+| --- | --- |
+| killed slots | 被超限货占掉、不能再卖的邻箱位 |
+| laycan | 受载期 |
+| FLT（full liner terms） | 班轮条款，装卸都管 |
+| FILO（free in, liner out） | 装不管、卸管 |
+| FIO（free in, free out） | 装卸都不管 |
+| FIOST（free in and out, stowed and trimmed） | 装卸、堆装、平舱都不管 |
+| revenue ton | 计费吨 |
+| chargeable weight | 计费重 |
+| ULD | 航空集装器 |
 
 ## 新能源 / 储能
 
