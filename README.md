@@ -8,8 +8,8 @@
 ## 新人从哪开始
 
 1. 打开站点首页的学习地图  
-2. 直接读 **[新人 12 周上手计划](./src/content/docs/00-overview/learning-plan.md)**  
-3. 每周学完就把笔记写回对应模块的 `.md`
+2. 先读 **[怎么用这个站](./src/content/docs/00-overview/how-to-use.md)**  
+3. 按首读顺序推进；遇到一票货再翻对应页
 
 ## 本地开发
 
@@ -30,7 +30,7 @@ D:\projects\project-cargo-academy\
 ├── astro.config.mjs
 ├── .github/workflows/        Pages 自动部署
 └── src/content/docs/         ← 唯一教材目录
-    ├── 00-overview/          岗位认知 + 12 周计划
+    ├── 00-overview/          岗位认知 + 使用方式
     ├── 01-trade-basics/      贸易物流基础
     ├── 02-freight-forwarding/ 货代
     ├── 03-project-cargo/     工程物流核心（护城河）
