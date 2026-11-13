@@ -2,7 +2,7 @@
 title: 件杂货询盘与计费
 description: 件杂询盘要确认的字段、四类货计费口径与装卸条款人话。
 sidebar:
-  order: 5
+  order: 3
 ---
 
 > 整理自内部培训幻灯片（2026-11）。操作以船东书面和港口当时规定为准。
@@ -46,7 +46,7 @@ sidebar:
 | FIFO | free in, free out（本培训用法；市场上也常写成 FIO） | 装卸都不管 |
 | FIOST | free in and out, stowed and trimmed | 装卸、堆装、平舱都不管 |
 
-附录里还出现过 LIFO（卸不管、装管）和 FIOS（装卸加堆装不管）。不要把这些写成你自己的报价条款。
+附录里还出现过 LIFO（卸不管、装管）和 FIOS（装卸加堆装不管）。认得出即可，对外引用以委托书原文为准。
 
 ## 船东眼中相对好配的货
 

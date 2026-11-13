@@ -2,7 +2,7 @@
 title: 绑扎加固与公路段
 description: Lashing、重心、厂到港公路超限——项目货最容易翻车的两段。
 sidebar:
-  order: 3
+  order: 4
 ---
 
 ## 为什么销售也要懂绑扎
