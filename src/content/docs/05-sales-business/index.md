@@ -16,6 +16,7 @@ sidebar:
 1. [询价反问清单](./inquiry-checklist/) — 每天用  
 2. [展会获客 SOP](./exhibition-sop/)  
 3. [报价结构](./quoting-structure/)  
+4. [一票货怎么走](./worked-example/) — 虚构货走完一票  
 
 ## 能力目标
 

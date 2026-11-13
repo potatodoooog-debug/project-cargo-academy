@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-// TODO: 部署前把 site 改成你的真实地址，例如 https://<你的用户名>.github.io
 export default defineConfig({
   site: 'https://potatodoooog-debug.github.io',
   base: '/project-cargo-academy/',
@@ -14,6 +13,7 @@ export default defineConfig({
       locales: {
         root: { label: '简体中文', lang: 'zh-CN' },
       },
+      customCss: ['./src/styles/custom.css'],
       sidebar: [
         { label: '岗位认知与学习地图', items: [{ autogenerate: { directory: '00-overview' } }] },
         { label: '国际贸易与物流基础', items: [{ autogenerate: { directory: '01-trade-basics' } }] },

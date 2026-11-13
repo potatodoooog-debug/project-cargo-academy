@@ -42,6 +42,11 @@ sidebar:
 | panels up / panels down | 挡板竖起 / 挡板放下 |
 | under deck / on deck | 舱内 / 甲板 |
 | Mafi | 滚装拖车 / 滚卸设备 |
+| MPP / MPV | 多用途船 |
+| stackable | 可堆叠 |
+| survey report | 监装报告 |
+| pre-stowage meeting | 船前会 |
+| low chassis | 低板车 |
 
 ## 操作与报价
 
@@ -56,6 +61,11 @@ sidebar:
 | revenue ton | 计费吨 |
 | chargeable weight | 计费重 |
 | ULD | 航空集装器 |
+| firm | 实货询盘 |
+| bidding | 投标询盘 |
+| budgetary | 预算询盘 |
+| Pivot | 一块板的保底计费公斤数 |
+| DGM report | 空运部分锂电编号另要的报告 |
 
 ## 新能源 / 储能
 

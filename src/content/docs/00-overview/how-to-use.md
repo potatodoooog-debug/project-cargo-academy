@@ -23,6 +23,7 @@ sidebar:
 | 场景 | 先翻 |
 |---|---|
 | 客户刚询价 | [询价清单](../05-sales-business/inquiry-checklist/)、[件杂询盘](../03-project-cargo/bbk-inquiry/)（若像项目货） |
+| 想走一遍完整询价 | [一票货怎么走](../05-sales-business/worked-example/)，页内再链到询价清单、特种柜和报价结构 |
 | 判断走 OT / FR / 件杂 | [特种柜](../03-project-cargo/special-containers/)、[Breakbulk 基础](../03-project-cargo/bbk-oog-basics/)、[方案怎么讲](../03-project-cargo/solution-framing/) |
 | 含锂电池或储能柜 | [锂电池红线](../04-energy-storage/battery-dg-rules/)、[储能产品](../04-energy-storage/product-basics/) |
 | 气体、灭火器、喷雾剂 | [2 类危险品](../01-trade-basics/dg-class-2/) |

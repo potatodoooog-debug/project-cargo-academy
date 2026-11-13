@@ -1,0 +1,25 @@
+:root {
+  --sl-color-accent-low: hsl(18, 42%, 22%);
+  --sl-color-accent: hsl(18, 76%, 62%);
+  --sl-color-accent-high: hsl(18, 78%, 86%);
+  --sl-font: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", var(--sl-font-system);
+  --sl-content-width: 48rem;
+  --sl-sidebar-width: 20.5rem;
+}
+
+:root[data-theme='light'] {
+  --sl-color-accent-low: hsl(18, 52%, 93%);
+  --sl-color-accent: hsl(18, 68%, 38%);
+  --sl-color-accent-high: hsl(18, 62%, 26%);
+  --sl-color-bg: hsl(204, 22%, 97%);
+  --sl-color-bg-nav: hsl(204, 18%, 95%);
+  --sl-color-bg-sidebar: hsl(204, 16%, 95%);
+  --sl-color-hairline-light: hsl(206, 16%, 86%);
+  --sl-color-hairline: hsl(206, 14%, 80%);
+}
+
+.sl-markdown-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
