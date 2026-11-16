@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import { absoluteDocLinks } from './src/plugins/absolute-doc-links.mjs';
 
 export default defineConfig({
   site: 'https://potatodoooog-debug.github.io',
@@ -26,5 +27,19 @@ export default defineConfig({
         { label: '资源与工具', items: [{ autogenerate: { directory: '08-resources' } }] },
       ],
     }),
+    {
+      name: 'absolute-doc-links',
+      hooks: {
+        'astro:config:setup'({ config }) {
+          const plugins = config.markdown?.processor?.options?.mdastPlugins;
+          if (!Array.isArray(plugins)) {
+            throw new Error(
+              'absolute-doc-links: markdown processor has no mdastPlugins array',
+            );
+          }
+          plugins.push(absoluteDocLinks);
+        },
+      },
+    },
   ],
 });
