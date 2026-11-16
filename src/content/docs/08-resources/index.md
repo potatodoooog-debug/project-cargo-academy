@@ -18,13 +18,18 @@ sidebar:
 - [Project Cargo Guides — EAN Networks](https://ean-network.com/knowledge-base)
 - [Project, OOG & Breakbulk Shipping Guide](https://blog.gettransport.com/logistics-guide/project-oog-breakbulk-cargo-shipping-guide-2026/)
 
-## 待逐步补的速查
+## 公开入口
 
-| 类型 | 方向 | 状态 |
+核对日期 2026-11-16。性质只分官方和第三方。
+
+| 类型 | 入口 | 性质 |
 |---|---|---|
-| 船东查询 | 主要船公司 cargo 工具 | 待补 |
-| 港口 | 盐田、蛇口、南沙、新加坡等 | 件杂吊重已有初表，集装箱港未补 |
-| 海关 | 中国海关 / 单一窗口 | 待补 |
-| 危险品 | IMDG 公开说明、正规培训入口 | 待补 |
+| 贸易术语说明 | [FCA 与 FOB](https://academy.iccwbo.org/incoterms/article/incoterms-2020-fca-or-fob/) | 官方学院，不是规则全文 |
+| 装箱守则 | [IMO CTU Code](https://www.imo.org/en/ourwork/safety/pages/ctu-code.aspx) | 官方 |
+| 装箱守则文本 | [UNECE CTU Code](https://unece.org/transport/documents/standards/ctu-code) | 官方 |
+| 公路超限 | [2016 年第 62 号](https://www.gov.cn/gongbao/content/2016/content_5120703.htm) | 官方 |
+| 海关 | [海关总署](https://www.customs.gov.cn/) | 官方 |
+| 申报 | [单一窗口](https://www.singlewindow.cn/) | 官方。危险货物申报、旧机电装运前检验在入口里，步骤以页面当时为准 |
+| 锂电池空运 | [IATA 情况说明](https://www.iata.org/en/iata-repository/pressroom/fact-sheets/fact-sheet-lithium-batteries) | 官方情况说明，不是 DGR 全文 |
 
-补链接时注明「官方/第三方」与最后核对日期。
+船公司和集装箱码头的订舱系统不集中收进本表。要查某一家，用该公司自己的 cargo 或 schedule 页，本站不代列。

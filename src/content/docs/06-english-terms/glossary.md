@@ -20,6 +20,8 @@ sidebar:
 | Customs Clearance | 报关 / 清关 |
 | Incoterms | 国际贸易术语 |
 | FOB / CIF / EXW / DDP | 装运港船上交货 / 成本保险加运费 / 工厂交货 / 完税后交货 |
+| FCA | 货交承运人。集装箱和多式联运常用，不等于 FOB。 |
+| DPU | 指定地点卸货后交货。 |
 
 ## 工程物流 / 项目货
 
@@ -34,6 +36,7 @@ sidebar:
 | Open Top | 开顶柜 |
 | Platform | 平板柜 |
 | Lashing & Securing | 绑扎与加固 |
+| CTU Code | 装箱操作守则。非强制，用来分清装箱和绑扎责任。 |
 | Lifting Point | 吊点 |
 | IG（in gauge） | 柜内尺寸 |
 | OH（over height） | 超高 |
