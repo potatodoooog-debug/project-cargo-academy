@@ -29,7 +29,11 @@ sidebar:
 | 装箱守则文本 | [UNECE CTU Code](https://unece.org/transport/documents/standards/ctu-code) | 官方 |
 | 公路超限 | [2016 年第 62 号](https://www.gov.cn/gongbao/content/2016/content_5120703.htm) | 官方 |
 | 海关 | [海关总署](https://www.customs.gov.cn/) | 官方 |
-| 申报 | [单一窗口](https://www.singlewindow.cn/) | 官方。危险货物申报、旧机电装运前检验在入口里，步骤以页面当时为准 |
+| 申报 | [单一窗口](https://www.singlewindow.cn/) | 官方。危险货物申报在入口里。高风险进口旧机电的装运前检验系统也在这里 |
+| 保险档位 | [CIP 与 CIF](https://academy.iccwbo.org/incoterms-2020-cip-or-cif/) | 官方学院，不是规则全文 |
+| 集装箱总重 | [IMO：VGM](https://www.imo.org/en/OurWork/Safety/Pages/Verification-of-the-gross-mass.aspx) | 官方 |
+| 船上系固 | [IMO：CSS Code](https://www.imo.org/en/OurWork/Safety/Pages/CSS-Code.aspx) | 官方说明，规则全文向 IMO 购买 |
+| 旧机电检验 | [检验监督管理办法](https://www.gov.cn/zhengce/2018-11/23/content_5723434.htm) | 官方 |
 | 锂电池空运 | [IATA 情况说明](https://www.iata.org/en/iata-repository/pressroom/fact-sheets/fact-sheet-lithium-batteries) | 官方情况说明，不是 DGR 全文 |
 
 船公司和集装箱码头的订舱系统不集中收进本表。要查某一家，用该公司自己的 cargo 或 schedule 页，本站不代列。

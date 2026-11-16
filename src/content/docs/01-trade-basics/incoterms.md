@@ -15,8 +15,8 @@ Incoterms（International Commercial Terms，国际贸易术语）由国际商�
 | **FCA** | Free Carrier | 货交承运人。集装箱和多式联运用这一条。风险在把货交给承运人时转移。 |
 | **FOB** | Free On Board | 只用于海运或内河。卖方把货装上船，风险在装上船时转移。集装箱常常先交到码头、还没上船，这种场合用 FCA。 |
 | **CFR** | Cost and Freight | 成本 + 运费。类似 CIF，但不含保险。 |
-| **CIF** | Cost, Insurance and Freight | 成本 + 保险费 + 运费。卖方承担到目的港的运费和保险费。 |
-| **CIP** | Carriage and Insurance Paid To | 运费加保险付至指定地点，任何运输方式都能用。卖方买保险。风险不是到了目的地才转移。 |
+| **CIF** | Cost, Insurance and Freight | 成本 + 保险费 + 运费。卖方承担到目的港的运费，并按协会货物条款 (C) 或同等条款买保险。风险仍在装上船时转移。 |
+| **CIP** | Carriage and Insurance Paid To | 运费加保险付至指定地点，任何运输方式都能用。卖方买保险，Incoterms 2020 要求协会货物条款 (A) 或同等条款。(A) 比 (C) 宽。风险在把货交给承运人时转移。 |
 | **DAP** | Delivered at Place | 目的地交货。卖方负责运到指定地点，但不负责卸货。 |
 | **DPU** | Delivered at Place Unloaded | 卸货后在指定地点交货。卖方负责卸货。 |
 | **DDP** | Delivered Duty Paid | 完税后交货。卖方负责一切，含目的国关税。 |
@@ -35,3 +35,5 @@ Incoterms（International Commercial Terms，国际贸易术语）由国际商�
 > 术语决定"谁付运费、谁指定物流"，直接决定你的客户是谁、你的服务卖给谁。
 
 海运还有 FAS，多式联运还有 CPT，认得出即可。术语边界整理自 ICC Academy 对 Incoterms 2020 的说明，2026-11-16 核对。规则全文由 ICC 出版，本页不是规则文本。
+
+十一个术语里，只有 CIF 和 CIP 要求卖方买保险。保险档位整理自 ICC Academy 对 CIP 与 CIF 的说明，2026-11-16 核对。合同另写了保额的，以合同为准。

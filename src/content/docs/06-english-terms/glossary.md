@@ -22,6 +22,7 @@ sidebar:
 | FOB / CIF / EXW / DDP | 装运港船上交货 / 成本保险加运费 / 工厂交货 / 完税后交货 |
 | FCA | 货交承运人。集装箱和多式联运常用，不等于 FOB。 |
 | DPU | 指定地点卸货后交货。 |
+| VGM | 集装箱核实总重。托运人提交后，才满足装船条件。 |
 
 ## 工程物流 / 项目货
 
@@ -31,12 +32,14 @@ sidebar:
 | Breakbulk | 散杂货 |
 | OOG（Out of Gauge） | 超尺寸（货物） |
 | Heavy Lift | 重件 / 大件吊装 |
+| Semi-submersible | 半潜船。货甲板可下潜，能浮的重大件用浮装浮卸。 |
 | RORO（Roll-on/Roll-off） | 滚装 |
 | Flat Rack | 框架柜 |
 | Open Top | 开顶柜 |
 | Platform | 平板柜 |
 | Lashing & Securing | 绑扎与加固 |
 | CTU Code | 装箱操作守则。非强制，用来分清装箱和绑扎责任。 |
+| CSS Code | 船上积载和系固的操作规则。绑扎图仍以船东书面为准。 |
 | Lifting Point | 吊点 |
 | IG（in gauge） | 柜内尺寸 |
 | OH（over height） | 超高 |

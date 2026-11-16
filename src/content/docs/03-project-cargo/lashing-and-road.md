@@ -28,6 +28,12 @@ IMO、国际劳工组织和联合国欧洲经济委员会有一份《货物运�
 - [IMO：CTU Code](https://www.imo.org/en/ourwork/safety/pages/ctu-code.aspx)
 - [UNECE：CTU Code 文本](https://unece.org/transport/documents/standards/ctu-code)
 
+## 船上系固看 CSS Code
+
+IMO 有一份《货物积载和系固安全操作规则》，英文 CSS Code，大会决议 A.714(17) 通过，后来有修订。说明页写明它是国际标准，对象是船东和经营人：船是否适合这笔货、船上有没有系固设备、货物如何积载和系固。船长对航行安全负责。做计划的人要会用船上的 Cargo Securing Manual。规则全文由 IMO 出版，本站不转载。CTU Code 讨论的是货物运输组件里由谁装箱；CSS Code 讨论的是船上怎么积载、怎么系固。绑扎图以船东书面为准。
+
+- [IMO：CSS Code](https://www.imo.org/en/OurWork/Safety/Pages/CSS-Code.aspx)
+
 ## 公路超限的官方线
 
 车货总高从地面超过 4 米、总宽超过 2.55 米、总长超过 18.1 米，是《超限运输车辆行驶公路管理规定》里的超限情形。这是交通运输部令 2016 年第 62 号，2021 年第 12 号作了修订。总质量按轴数另有标准，公报还写了符合国家标准的部分车型如何认定。不可解体的大件运输要办许可。办理步骤以起运地当时的政务系统为准，本页不写。
