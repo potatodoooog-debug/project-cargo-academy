@@ -1,25 +1,872 @@
+/* ==========================================================================
+   Project Cargo Academy — Maritime Technical Editorial Design System
+   Palette: Deep Hull Slate (#1c2836) + Container Signal Rust (#c45c26)
+   Zero external dependencies · Light/Dark dual-mode · Mobile & Print tuned
+   ========================================================================== */
+
 :root {
-  --sl-color-accent-low: hsl(18, 42%, 22%);
-  --sl-color-accent: hsl(18, 76%, 62%);
-  --sl-color-accent-high: hsl(18, 78%, 86%);
+  /* Dark mode (Night Port Ops) */
+  --sl-color-accent-low: hsl(18, 42%, 17%);
+  --sl-color-accent: hsl(19, 78%, 58%);
+  --sl-color-accent-high: hsl(22, 85%, 84%);
+
+  --sl-color-bg: #0e151d;
+  --sl-color-bg-nav: #111923;
+  --sl-color-bg-sidebar: #111923;
+  --sl-color-bg-inline-code: rgba(148, 173, 198, 0.14);
+  --sl-color-hairline-light: #202e3e;
+  --sl-color-hairline: #2a3b4e;
+
   --sl-font: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", var(--sl-font-system);
-  --sl-content-width: 48rem;
+  --sl-font-mono: "JetBrains Mono", "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+  --sl-content-width: 50rem;
   --sl-sidebar-width: 20.5rem;
+
+  /* Semantic tokens */
+  --pca-surface: #141e29;
+  --pca-surface-elevated: #182432;
+  --pca-surface-muted: #111a24;
+  --pca-border: #253649;
+  --pca-border-strong: #354b63;
+  --pca-ink: #eaf0f6;
+  --pca-ink-muted: #99adc2;
+  --pca-slate: #1c2836;
+  --pca-rust: #e2753d;
+  --pca-rust-soft: rgba(226, 117, 61, 0.14);
+  --pca-danger: #f06e64;
+  --pca-danger-soft: rgba(240, 110, 100, 0.13);
+  --pca-steel: #6da0c9;
+  --pca-steel-soft: rgba(109, 160, 201, 0.14);
+  --pca-grid-line: rgba(148, 179, 209, 0.06);
+  --pca-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
+  --pca-shadow-md: 0 10px 28px rgba(0, 0, 0, 0.28);
 }
 
 :root[data-theme='light'] {
-  --sl-color-accent-low: hsl(18, 52%, 93%);
-  --sl-color-accent: hsl(18, 68%, 38%);
-  --sl-color-accent-high: hsl(18, 62%, 26%);
-  --sl-color-bg: hsl(204, 22%, 97%);
-  --sl-color-bg-nav: hsl(204, 18%, 95%);
-  --sl-color-bg-sidebar: hsl(204, 16%, 95%);
-  --sl-color-hairline-light: hsl(206, 16%, 86%);
-  --sl-color-hairline: hsl(206, 14%, 80%);
+  /* Light mode (Dockyard Blueprint Paper) */
+  --sl-color-accent-low: hsl(20, 62%, 94%);
+  --sl-color-accent: hsl(19, 68%, 43%);
+  --sl-color-accent-high: hsl(19, 64%, 26%);
+
+  --sl-color-bg: #f6f8fa;
+  --sl-color-bg-nav: #edf1f5;
+  --sl-color-bg-sidebar: #eef2f6;
+  --sl-color-bg-inline-code: rgba(28, 40, 54, 0.07);
+  --sl-color-hairline-light: #dce3ec;
+  --sl-color-hairline: #c7d2df;
+
+  --pca-surface: #ffffff;
+  --pca-surface-elevated: #ffffff;
+  --pca-surface-muted: #f0f4f8;
+  --pca-border: #d5dee8;
+  --pca-border-strong: #b6c4d4;
+  --pca-ink: #152230;
+  --pca-ink-muted: #4b5e73;
+  --pca-slate: #1c2836;
+  --pca-rust: #c45c26;
+  --pca-rust-soft: rgba(196, 92, 38, 0.1);
+  --pca-danger: #b8372e;
+  --pca-danger-soft: rgba(184, 55, 46, 0.08);
+  --pca-steel: #2e597d;
+  --pca-steel-soft: rgba(46, 89, 125, 0.09);
+  --pca-grid-line: rgba(28, 40, 54, 0.045);
+  --pca-shadow-sm: 0 1px 2px rgba(20, 32, 46, 0.05);
+  --pca-shadow-md: 0 10px 26px rgba(20, 32, 46, 0.08);
 }
 
+/* --------------------------------------------------------------------------
+   Global Navigation & Sidebar Polish
+   -------------------------------------------------------------------------- */
+
+header.header {
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--pca-border);
+}
+
+.site-title {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+nav.sidebar .top-level > li > details > summary {
+  font-size: 0.84rem;
+  letter-spacing: 0.01em;
+}
+
+nav.sidebar a[aria-current='page'] {
+  font-weight: 600;
+  border-left: 3px solid var(--pca-rust);
+  border-radius: 0 0.375rem 0.375rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   Editorial Reading Rhythm (All Pure .md Content Pages)
+   -------------------------------------------------------------------------- */
+
+.sl-markdown-content {
+  line-height: 1.75;
+  font-feature-settings: "tnum" 1;
+}
+
+.sl-markdown-content h2:not(.pca-router__title) {
+  margin-top: 2.25rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--pca-border);
+  letter-spacing: -0.015em;
+}
+
+.sl-markdown-content > h2:first-child,
+.sl-markdown-content .pca-router + .sl-heading-wrapper > h2 {
+  border-top: none;
+  padding-top: 0;
+}
+
+.sl-markdown-content h3 {
+  letter-spacing: -0.01em;
+}
+
+.sl-markdown-content code:not(pre code) {
+  font-family: var(--sl-font-mono);
+  font-size: 0.85em;
+  padding: 0.12em 0.42em;
+  border-radius: 0.3rem;
+  border: 1px solid var(--pca-border);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Technical Note / Source Disclaimer Blockquotes */
+.sl-markdown-content blockquote {
+  margin: 1.25rem 0;
+  padding: 0.85rem 1.1rem;
+  border-inline-start: 3px solid var(--pca-rust);
+  background: var(--pca-surface-muted);
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: var(--pca-ink);
+  font-size: 0.94rem;
+}
+
+.sl-markdown-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Data Tables — Crisp Technical Grids + Smooth Horizontal Scroll */
 .sl-markdown-content table {
   display: block;
+  width: max-content;
   max-width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.25rem 0;
+  border: 1px solid var(--pca-border);
+  border-radius: 0.55rem;
+  background: var(--pca-surface);
+  font-size: 0.92rem;
+  font-variant-numeric: tabular-nums;
+  box-shadow: var(--pca-shadow-sm);
+}
+
+.sl-markdown-content thead th {
+  background: var(--pca-surface-muted);
+  color: var(--pca-ink);
+  font-weight: 650;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--pca-border-strong);
+  padding: 0.65rem 0.9rem;
+}
+
+.sl-markdown-content tbody td {
+  padding: 0.62rem 0.9rem;
+  border-bottom: 1px solid var(--pca-border);
+  vertical-align: top;
+}
+
+.sl-markdown-content tbody td:first-child {
+  min-width: 5.5rem;
+  font-weight: 550;
+}
+
+.sl-markdown-content tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.sl-markdown-content tbody tr:hover td {
+  background: var(--pca-surface-muted);
+}
+
+/* Native <details> Polish (if used in any Markdown page) */
+.sl-markdown-content details {
+  border: 1px solid var(--pca-border);
+  border-radius: 0.55rem;
+  background: var(--pca-surface);
+  padding: 0.65rem 1rem;
+}
+
+.sl-markdown-content details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--pca-ink);
+}
+
+/* --------------------------------------------------------------------------
+   Splash Homepage: Blueprint Hero & Module Cards
+   -------------------------------------------------------------------------- */
+
+[data-has-hero] .main-pane {
+  background-image:
+    linear-gradient(to right, var(--pca-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--pca-grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: top center;
+}
+
+[data-has-hero] .hero {
+  position: relative;
+  padding-block: clamp(2.2rem, 5vw, 3.6rem) clamp(1.5rem, 3.5vw, 2.4rem);
+  gap: 1.5rem;
+}
+
+[data-has-hero] .hero h1 {
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+[data-has-hero] .hero .tagline {
+  font-size: clamp(1rem, 1.8vw, 1.16rem);
+  color: var(--pca-ink-muted);
+  max-width: 44ch;
+  line-height: 1.65;
+  text-wrap: balance;
+}
+
+[data-has-hero] .hero .sl-link-button.primary {
+  background: var(--pca-rust);
+  border-color: var(--pca-rust);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 0.55rem;
+  box-shadow: 0 2px 10px rgba(196, 92, 38, 0.24);
+  transition: transform 140ms ease, filter 140ms ease, box-shadow 140ms ease;
+}
+
+[data-has-hero] .hero .sl-link-button.primary:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(196, 92, 38, 0.3);
+}
+
+[data-has-hero] .hero .sl-link-button.secondary {
+  background: var(--pca-surface);
+  border: 1px solid var(--pca-border-strong);
+  color: var(--pca-ink);
+  font-weight: 600;
+  border-radius: 0.55rem;
+  transition: border-color 140ms ease, background-color 140ms ease, transform 140ms ease;
+}
+
+[data-has-hero] .hero .sl-link-button.secondary:hover {
+  border-color: var(--pca-rust);
+  transform: translateY(-1px);
+}
+
+/* Module Link Cards — Balanced 3x3 grid for 9 modules on wide desktop */
+.card-grid {
+  gap: 0.9rem;
+}
+
+@media (min-width: 64rem) {
+  .card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.sl-link-card {
+  position: relative;
+  background: var(--pca-surface);
+  border: 1px solid var(--pca-border);
+  border-radius: 0.7rem;
+  padding: 1.05rem 1.15rem;
+  box-shadow: var(--pca-shadow-sm);
+  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.sl-link-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  border-radius: 0.7rem 0 0 0.7rem;
+  background: transparent;
+  transition: background-color 160ms ease;
+}
+
+.sl-link-card:hover {
+  border-color: var(--pca-rust);
+  transform: translateY(-2px);
+  box-shadow: var(--pca-shadow-md);
+}
+
+.sl-link-card:hover::before {
+  background: var(--pca-rust);
+}
+
+.sl-link-card .title {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.sl-link-card .description {
+  font-size: 0.88rem;
+  color: var(--pca-ink-muted);
+  line-height: 1.55;
+}
+
+/* Homepage Bottom 2-Column Notes */
+.pca-home-notes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.pca-home-note {
+  background: var(--pca-surface);
+  border: 1px solid var(--pca-border);
+  border-radius: 0.7rem;
+  padding: 1.1rem 1.25rem;
+  box-shadow: var(--pca-shadow-sm);
+}
+
+.pca-home-note h3 {
+  margin: 0 0 0.65rem;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--pca-ink);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pca-home-note h3::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 2px;
+  background: var(--pca-rust);
+  flex-shrink: 0;
+}
+
+.pca-home-note ol,
+.pca-home-note ul {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: 0.9rem;
+  color: var(--pca-ink-muted);
+  line-height: 1.68;
+}
+
+.pca-home-note li + li {
+  margin-top: 0.32rem;
+}
+
+.pca-home-note a {
+  color: var(--pca-rust);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.pca-home-note a:hover {
+  filter: brightness(1.12);
+}
+
+.pca-home-note code {
+  font-family: var(--sl-font-mono);
+  font-size: 0.84em;
+  padding: 0.1em 0.4em;
+  border-radius: 0.28rem;
+  border: 1px solid var(--pca-border);
+  background: var(--pca-surface-muted);
+  color: var(--pca-ink);
+}
+
+/* --------------------------------------------------------------------------
+   Interactive Homepage Component: CargoRouter (OPS DISPATCH)
+   -------------------------------------------------------------------------- */
+
+.pca-router {
+  margin: 0.5rem 0 2.5rem;
+  background: var(--pca-surface);
+  border: 1px solid var(--pca-border);
+  border-top: 3px solid var(--pca-rust);
+  border-radius: 0.85rem;
+  padding: 1.35rem 1.4rem;
+  box-shadow: var(--pca-shadow-md);
+}
+
+.pca-router__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.65rem 1.25rem;
+  margin-bottom: 1.05rem;
+}
+
+.pca-router__eyebrow {
+  display: inline-block;
+  font-family: var(--sl-font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--pca-rust);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.pca-router__title {
+  margin: 0;
+  font-size: 1.22rem;
+  font-weight: 750;
+  letter-spacing: -0.015em;
+  color: var(--pca-ink);
+  line-height: 1.3;
+}
+
+.pca-router__meta {
+  font-size: 0.82rem;
+  color: var(--pca-ink-muted);
+  font-family: var(--sl-font-mono);
+}
+
+.pca-router__rail-wrap {
+  position: relative;
+  margin-bottom: 1.15rem;
+}
+
+.pca-router__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pca-router__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.35rem;
+  padding: 0.4rem 0.78rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--pca-border);
+  background: var(--pca-surface-muted);
+  color: var(--pca-ink);
+  font-family: var(--sl-font);
+  font-size: 0.86rem;
+  font-weight: 550;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 140ms ease, background-color 140ms ease, color 140ms ease, transform 120ms ease;
+}
+
+.pca-router__tab:hover {
+  border-color: var(--pca-border-strong);
+  background: var(--pca-surface-elevated);
+}
+
+.pca-router__tab:focus-visible {
+  outline: 2px solid var(--pca-rust);
+  outline-offset: 2px;
+}
+
+.pca-router__code {
+  font-family: var(--sl-font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.1rem 0.36rem;
+  border-radius: 0.28rem;
+  background: var(--pca-surface);
+  border: 1px solid var(--pca-border);
+  color: var(--pca-ink-muted);
+}
+
+.pca-router__tab.is-active {
+  background: var(--pca-slate);
+  border-color: var(--pca-slate);
+  color: #f4f7fa;
+  box-shadow: 0 3px 10px rgba(20, 32, 46, 0.18);
+}
+
+:root:not([data-theme='light']) .pca-router__tab.is-active {
+  background: var(--pca-rust);
+  border-color: var(--pca-rust);
+  color: #111820;
+}
+
+.pca-router__tab.is-active .pca-router__code {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+:root:not([data-theme='light']) .pca-router__tab.is-active .pca-router__code {
+  background: rgba(14, 21, 29, 0.24);
+  color: #111820;
+}
+
+.pca-router__tab[data-tone='danger'].is-active {
+  background: var(--pca-danger);
+  border-color: var(--pca-danger);
+  color: #ffffff;
+}
+
+/* Dispatch Panel */
+.pca-router__panel {
+  border: 1px solid var(--pca-border);
+  border-radius: 0.65rem;
+  background: var(--pca-surface-muted);
+  padding: 1.1rem 1.15rem;
+  animation: pcaPanelIn 160ms ease-out;
+}
+
+@keyframes pcaPanelIn {
+  from {
+    opacity: 0.4;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pca-router__summary-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.95rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed var(--pca-border-strong);
+}
+
+.pca-router__panel-code {
+  font-family: var(--sl-font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.18rem 0.5rem;
+  border-radius: 0.3rem;
+  background: var(--pca-rust-soft);
+  color: var(--pca-rust);
+  flex-shrink: 0;
+}
+
+.pca-router__panel[data-tone='danger'] .pca-router__panel-code {
+  background: var(--pca-danger-soft);
+  color: var(--pca-danger);
+}
+
+.pca-router__panel[data-tone='steel'] .pca-router__panel-code {
+  background: var(--pca-steel-soft);
+  color: var(--pca-steel);
+}
+
+.pca-router__summary {
+  margin: 0;
+  font-size: 0.96rem;
+  font-weight: 650;
+  color: var(--pca-ink);
+  line-height: 1.45;
+}
+
+.pca-router__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.pca-router__box {
+  background: var(--pca-surface);
+  border: 1px solid var(--pca-border);
+  border-radius: 0.55rem;
+  padding: 0.85rem 0.95rem;
+}
+
+.pca-router__box--action {
+  border-left: 3px solid var(--pca-steel);
+}
+
+.pca-router__box--redline {
+  border-left: 3px solid var(--pca-rust);
+}
+
+.pca-router__panel[data-tone='danger'] .pca-router__box--redline {
+  border-left-color: var(--pca-danger);
+  background: var(--pca-danger-soft);
+}
+
+.pca-router__box-label {
+  display: block;
+  font-family: var(--sl-font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--pca-ink-muted);
+  margin-bottom: 0.35rem;
+}
+
+.pca-router__panel[data-tone='danger'] .pca-router__box--redline .pca-router__box-label {
+  color: var(--pca-danger);
+}
+
+.pca-router__box p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.62;
+  color: var(--pca-ink);
+}
+
+.pca-router__links-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pca-router__links-label {
+  font-family: var(--sl-font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--pca-ink-muted);
+}
+
+.pca-router__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.pca-router__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.35rem;
+  padding: 0.42rem 0.82rem;
+  border-radius: 0.48rem;
+  border: 1px solid var(--pca-border-strong);
+  background: var(--pca-surface);
+  color: var(--pca-ink);
+  text-decoration: none;
+  font-size: 0.87rem;
+  font-weight: 600;
+  transition: border-color 140ms ease, background-color 140ms ease, transform 120ms ease;
+}
+
+.pca-router__link:hover {
+  border-color: var(--pca-rust);
+  background: var(--pca-rust-soft);
+  transform: translateY(-1px);
+}
+
+.pca-router__link-tag {
+  font-family: var(--sl-font-mono);
+  font-size: 0.7rem;
+  font-weight: 650;
+  padding: 0.08rem 0.38rem;
+  border-radius: 0.25rem;
+  background: var(--pca-surface-muted);
+  color: var(--pca-ink-muted);
+}
+
+.pca-router__link-arrow {
+  color: var(--pca-rust);
+  font-weight: 700;
+  transition: transform 140ms ease;
+}
+
+.pca-router__link:hover .pca-router__link-arrow {
+  transform: translateX(2px);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile "Exhibition Pocket Reference" Optimization
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .pca-router__grid,
+  .pca-home-notes {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .pca-router {
+    padding: 1rem 0.95rem;
+    border-radius: 0.7rem;
+  }
+
+  .pca-router__title {
+    font-size: 1.08rem;
+  }
+
+  .pca-router__rail-wrap::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0.35rem;
+    width: 1.6rem;
+    pointer-events: none;
+    background: linear-gradient(to right, transparent, var(--pca-surface));
+  }
+
+  .pca-router__tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.35rem;
+    padding-right: 1.25rem;
+  }
+
+  .pca-router__tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pca-router__tab {
+    min-height: 2.75rem;
+    padding: 0.45rem 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .pca-router__link {
+    width: 100%;
+    justify-content: space-between;
+    min-height: 2.75rem;
+  }
+
+  .pca-router__link-text {
+    flex: 1;
+  }
+
+  .sl-markdown-content {
+    font-size: 0.95rem;
+    line-height: 1.72;
+  }
+
+  .sl-markdown-content table {
+    font-size: 0.85rem;
+  }
+
+  .sl-markdown-content thead th,
+  .sl-markdown-content tbody td {
+    padding: 0.52rem 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pca-router__panel,
+  .sl-link-card,
+  .pca-router__tab,
+  .pca-router__link,
+  [data-has-hero] .hero .sl-link-button {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Executive Print / Cmd+P PDF Briefing Stylesheet
+   -------------------------------------------------------------------------- */
+
+@media print {
+  @page {
+    margin: 14mm 16mm;
+  }
+
+  header.header,
+  nav.sidebar,
+  .sidebar-pane,
+  .right-sidebar-container,
+  starlight-toc,
+  mobile-starlight-toc,
+  .pagination-links,
+  .sl-anchor-link,
+  .sl-skip-link,
+  .hero .actions,
+  .pca-router__tabs,
+  .pca-router__links-block {
+    display: none !important;
+  }
+
+  :root,
+  :root[data-theme='light'] {
+    --sl-color-bg: #ffffff !important;
+    --pca-surface: #ffffff !important;
+    --pca-surface-muted: #f7f8fa !important;
+    --pca-ink: #111111 !important;
+    --pca-ink-muted: #444444 !important;
+    --pca-border: #cccccc !important;
+  }
+
+  body,
+  .page,
+  .main-frame,
+  .main-pane,
+  .content-panel {
+    background: #ffffff !important;
+    background-image: none !important;
+    color: #111111 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .sl-container {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .sl-markdown-content {
+    font-size: 10.5pt !important;
+    line-height: 1.6 !important;
+  }
+
+  .sl-markdown-content h1,
+  .sl-markdown-content h2,
+  .sl-markdown-content h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+    color: #111111 !important;
+  }
+
+  .sl-markdown-content table {
+    display: table !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    break-inside: auto;
+    border-collapse: collapse !important;
+  }
+
+  .sl-markdown-content tr,
+  .sl-markdown-content blockquote,
+  .pca-router,
+  .sl-link-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    box-shadow: none !important;
+  }
+
+  a {
+    color: #111111 !important;
+    text-decoration: none !important;
+  }
 }

@@ -1,0 +1,132 @@
+---
+import { CARGO_ROUTES } from '../data/cargo-routes';
+---
+
+<section class="pca-router not-content" aria-labelledby="pca-router-heading" data-pca-router>
+  <div class="pca-router__head">
+    <div class="pca-router__title-group">
+      <span class="pca-router__eyebrow">OPS DISPATCH · 现场快速路由</span>
+      <h2 id="pca-router-heading" class="pca-router__title">拿到一票新询盘，先按特征点这里</h2>
+    </div>
+    <span class="pca-router__meta">8 类高频场景 · 3 秒定位必翻页与红线</span>
+  </div>
+
+  <div class="pca-router__rail-wrap">
+    <div class="pca-router__tabs" role="tablist" aria-label="货物与业务场景选择">
+      {CARGO_ROUTES.map((route, idx) => (
+        <button
+          type="button"
+          role="tab"
+          class={`pca-router__tab${idx === 0 ? ' is-active' : ''}`}
+          id={`pca-tab-${route.id}`}
+          aria-selected={idx === 0 ? 'true' : 'false'}
+          aria-controls={`pca-panel-${route.id}`}
+          tabindex={idx === 0 ? 0 : -1}
+          data-route-tab={route.id}
+          data-tone={route.tone}
+        >
+          <span class="pca-router__code">{route.code}</span>
+          <span class="pca-router__label">{route.label}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <div class="pca-router__panels">
+    {CARGO_ROUTES.map((route, idx) => (
+      <div
+        role="tabpanel"
+        class={`pca-router__panel${idx === 0 ? ' is-active' : ''}`}
+        id={`pca-panel-${route.id}`}
+        aria-labelledby={`pca-tab-${route.id}`}
+        hidden={idx !== 0}
+        data-route-panel={route.id}
+        data-tone={route.tone}
+      >
+        <div class="pca-router__summary-row">
+          <span class="pca-router__panel-code">{route.code}</span>
+          <p class="pca-router__summary">{route.summary}</p>
+        </div>
+
+        <div class="pca-router__grid">
+          <div class="pca-router__box pca-router__box--action">
+            <span class="pca-router__box-label">第一步动作</span>
+            <p>{route.firstMove}</p>
+          </div>
+          <div class="pca-router__box pca-router__box--redline">
+            <span class="pca-router__box-label">必守红线</span>
+            <p>{route.redline}</p>
+          </div>
+        </div>
+
+        <div class="pca-router__links-block">
+          <span class="pca-router__links-label">直达手册页</span>
+          <div class="pca-router__links">
+            {route.links.map((item) => (
+              <a class="pca-router__link" href={item.href}>
+                <span class="pca-router__link-tag">{item.tag}</span>
+                <span class="pca-router__link-text">{item.label}</span>
+                <span class="pca-router__link-arrow" aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  function initCargoRouters() {
+    document.querySelectorAll<HTMLElement>('[data-pca-router]').forEach((root) => {
+      if (root.dataset.bound === 'true') return;
+      root.dataset.bound = 'true';
+
+      const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-route-tab]'));
+      const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-route-panel]'));
+
+      const activate = (targetId: string, focusTab = false) => {
+        tabs.forEach((tab) => {
+          const isMatch = tab.dataset.routeTab === targetId;
+          tab.classList.toggle('is-active', isMatch);
+          tab.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+          tab.tabIndex = isMatch ? 0 : -1;
+          if (isMatch && focusTab) {
+            tab.focus();
+            tab.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+          }
+        });
+
+        panels.forEach((panel) => {
+          const isMatch = panel.dataset.routePanel === targetId;
+          panel.classList.toggle('is-active', isMatch);
+          panel.hidden = !isMatch;
+        });
+      };
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+          const id = tab.dataset.routeTab;
+          if (id) activate(id, false);
+        });
+
+        tab.addEventListener('keydown', (event) => {
+          if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft' && event.key !== 'Home' && event.key !== 'End') {
+            return;
+          }
+          event.preventDefault();
+          let nextIndex = index;
+          if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+          if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+          if (event.key === 'Home') nextIndex = 0;
+          if (event.key === 'End') nextIndex = tabs.length - 1;
+          const nextId = tabs[nextIndex]?.dataset.routeTab;
+          if (nextId) activate(nextId, true);
+        });
+      });
+    });
+  }
+
+  initCargoRouters();
+  document.addEventListener('astro:after-swap', initCargoRouters);
+</script>

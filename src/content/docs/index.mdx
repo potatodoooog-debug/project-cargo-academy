@@ -1,17 +1,18 @@
 ---
 title: 工程物流项目经理学习站
-description: 面向工程物流 / 项目货（Project Cargo）新人的可持续迭代学习资料
+description: 面向工程物流 / 项目货（Project Cargo）的实战知识手册与速查工作台
 template: splash
 hero:
   title: 工程物流项目经理学习站
-  tagline: 按首读建立基础，按一票货回来查阅。
+  tagline: 按首读建立基础，按一票货回来查阅。面向 Breakbulk、OOG、特种柜与储能出海。
   actions:
-    - text: 开始读
+    - text: 开始首读
       link: 00-overview/how-to-use/
       icon: right-arrow
     - text: 走一票货
       link: 05-sales-business/worked-example/
       icon: right-arrow
+      variant: secondary
     - text: GitHub 仓库
       link: https://github.com/potatodoooog-debug/project-cargo-academy
       icon: github
@@ -19,31 +20,41 @@ hero:
 ---
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import CargoRouter from '../../components/CargoRouter.astro';
 
-## 学习地图
+<CargoRouter />
 
-按顺序学习 8 个模块，即可建立岗位认知与可上手的能力框架。每个模块正文为中文，关键术语附英文对照。
+## 学习地图（9 个模块）
+
+按依赖顺序读完前 6 个基础与核心模块，即可建立岗位认知与可上手的方案框架；案例库与资源页随实票持续查阅和补充。正文为中文，关键术语附英文对照。
 
 <CardGrid>
-  <LinkCard title="00 岗位认知与学习地图" description="搞清楚这个岗位到底是什么：销售 + BD，而不是传统意义上的项目经理。" href="00-overview/" />
-  <LinkCard title="01 国际贸易与物流基础" description="Incoterms、国际物流链路、基础单证与付款方式。" href="01-trade-basics/" />
-  <LinkCard title="02 货代业务" description="货运代理角色与流程、集装箱类型、华南港口与航线。" href="02-freight-forwarding/" />
-  <LinkCard title="03 工程物流核心" description="Breakbulk、OOG、Heavy Lift、特种柜与绑扎加固。" href="03-project-cargo/" />
-  <LinkCard title="04 储能柜出海专题" description="储能柜产品、锂电池危险品规则、出口认证与目标市场。" href="04-energy-storage/" />
-  <LinkCard title="05 商务与销售" description="客户开发、报价、招投标与客户关系维护。" href="05-sales-business/" />
-  <LinkCard title="06 英语与术语" description="行业英文术语表、邮件模板与电话会议用语。" href="06-english-terms/" />
-  <LinkCard title="07 案例库" description="项目复盘、全流程 checklist 与展会记录（持续迭代）。" href="07-case-library/" />
-  <LinkCard title="08 资源与工具" description="船公司 / 港口 / 海关官网、行业媒体与展会日历。" href="08-resources/" />
+  <LinkCard title="00 岗位认知与学习地图" description="理清工程物流项目经理的销售 + BD 本质、职业路径与全站使用方式。" href="00-overview/" />
+  <LinkCard title="01 国际贸易与物流基础" description="Incoterms 2020、国际物流全链路、基础单证、付款方式与 2 类气体危险品。" href="01-trade-basics/" />
+  <LinkCard title="02 货代业务" description="货运代理角色与流程、标准柜与特种柜、华南港口航线与空运基础。" href="02-freight-forwarding/" />
+  <LinkCard title="03 工程物流核心" description="Breakbulk、OOG、特种柜 FR/OT、件杂询盘、绑扎公路超限、港口操作与滚装。" href="03-project-cargo/" />
+  <LinkCard title="04 储能柜出海专题" description="储能产品物流视角、锂电池危险品红线、目标市场与出口认证直觉。" href="04-energy-storage/" />
+  <LinkCard title="05 商务与销售" description="询价反问清单、展会获客 SOP、报价结构、订舱交接与虚构货演练。" href="05-sales-business/" />
+  <LinkCard title="06 英语与术语" description="行业英文术语表、商务英文邮件模板与电话/展会高频沟通短句。" href="06-english-terms/" />
+  <LinkCard title="07 案例库" description="特种柜/重件/卷钢/车辆模式案例、全流程 Checklist 与展会复盘模板。" href="07-case-library/" />
+  <LinkCard title="08 资源与工具" description="中国主要件杂码头吊重、行业展会日历与权威公开规则入口。" href="08-resources/" />
 </CardGrid>
 
-## 如何使用本学习站
-
-1. **新人从这里开始**：[怎么用这个站](00-overview/how-to-use/)
-2. **按模块推进**：00 → 01 → 02 入门；06 术语全程并行；03 → 04 专业核心；05 商务成交；07 / 08 持续沉淀。
-3. **有新词、跟完一票、参加一场展，就补对应的页面。**
-4. **术语对照**：正文中文，括号附英文，靠日常攒邮件能力。
-
-## 迭代约定
-
-「内容即代码」：`src/content/docs/` 是唯一教材目录。架构说明见仓库 `DESIGN.md`。  
-公开库只放通用岗位知识；真实运价与客户信息放本地私密目录，不要 push。
+<div class="pca-home-notes not-content">
+  <div class="pca-home-note">
+    <h3>如何使用本手册</h3>
+    <ol>
+      <li><strong>首次通读</strong>：先看 <a href="/project-cargo-academy/00-overview/how-to-use/">怎么用这个站</a>，按 00 → 01 → 02 → 03 → 04 → 05 推进，06 术语全程并行。</li>
+      <li><strong>实票反查</strong>：接到新询盘，直接用上方「一票货快速路由」点选货物特征，3 秒直达对应页与红线。</li>
+      <li><strong>单页简报</strong>：任意页面按 <code>Cmd/Ctrl + P</code> 即可导出隐藏侧栏的干净 PDF 简报。</li>
+    </ol>
+  </div>
+  <div class="pca-home-note">
+    <h3>公开与私密边界</h3>
+    <ul>
+      <li><strong>唯一教材源</strong>：所有内容均为 <code>src/content/docs/</code> 下的纯 Markdown，随时可轻量改写。</li>
+      <li><strong>按事件迭代</strong>：有新词进术语表，跟完一票沉淀模式案例，参加一场展更新展会日历。</li>
+      <li><strong>零机密原则</strong>：本公开库只放通用岗位知识与结构模板；真实运价、客户与内部口径放本地私密目录。</li>
+    </ul>
+  </div>
+</div>
