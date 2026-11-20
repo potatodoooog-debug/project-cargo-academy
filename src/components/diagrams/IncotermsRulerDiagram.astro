@@ -1,0 +1,130 @@
+---
+---
+<figure class="pca-diagram not-content">
+  <div class="pca-diagram__bar">
+    <span class="pca-diagram__fig">FIG 04 · INCOTERMS 2020 RISK VS FREIGHT RULER</span>
+    <span class="pca-diagram__hint">一图看清：谁付主运费（蓝条）vs 风险在哪转移（橙色菱形）vs 谁买保险</span>
+  </div>
+  <div class="pca-diagram__canvas">
+    <svg viewBox="0 0 840 340" role="img" aria-label="Incoterms 2020 风险转移点、主运费承担与保险义务全景标尺图" xmlns="http://www.w3.org/2000/svg">
+      <!-- Column Headers -->
+      <g font-size="10.5" font-weight="700" fill="var(--pca-ink-muted)" text-anchor="middle">
+        <text x="135" y="24">工厂</text>
+        <text x="235" y="24">交承运人/内陆</text>
+        <text x="345" y="24">装港上船</text>
+        <text x="485" y="24">海运干线</text>
+        <text x="615" y="24">目的港到港</text>
+        <text x="715" y="24">卸货/清关</text>
+        <text x="795" y="24">买方地点</text>
+      </g>
+
+      <!-- Vertical stage guide lines -->
+      <g stroke="var(--pca-border)" stroke-width="1" stroke-dasharray="3 3">
+        <line x1="135" y1="34" x2="135" y2="296" />
+        <line x1="235" y1="34" x2="235" y2="296" />
+        <line x1="345" y1="34" x2="345" y2="296" />
+        <line x1="615" y1="34" x2="615" y2="296" />
+        <line x1="715" y1="34" x2="715" y2="296" />
+        <line x1="795" y1="34" x2="795" y2="296" />
+      </g>
+
+      <!-- Rows -->
+      <!-- Helper layout: y = 52, 82, 112, 142, 172, 202, 232, 262, 292 -->
+      <!-- 1. EXW -->
+      <g transform="translate(0, 52)">
+        <text x="20" y="4" fill="var(--pca-ink)" font-size="11.5" font-weight="700" font-family="var(--sl-font-mono)">EXW</text>
+        <line x1="135" y1="0" x2="795" y2="0" stroke="var(--pca-border)" stroke-width="4" stroke-linecap="round" />
+        <polygon points="135,-7 142,0 135,7 128,0" fill="var(--pca-rust)" />
+        <text x="155" y="4" fill="var(--pca-ink-muted)" font-size="10">买方全程买单并担责</text>
+      </g>
+
+      <!-- 2. FCA -->
+      <g transform="translate(0, 82)">
+        <text x="20" y="4" fill="var(--pca-ink)" font-size="11.5" font-weight="700" font-family="var(--sl-font-mono)">FCA</text>
+        <line x1="135" y1="0" x2="795" y2="0" stroke="var(--pca-border)" stroke-width="4" stroke-linecap="round" />
+        <line x1="135" y1="0" x2="235" y2="0" stroke="var(--pca-steel)" stroke-width="5" stroke-linecap="round" />
+        <polygon points="235,-7 242,0 235,7 228,0" fill="var(--pca-rust)" />
+        <text x="255" y="4" fill="var(--pca-ink-muted)" font-size="10">集装箱/多式联运首选（买方付海运）</text>
+      </g>
+
+      <!-- 3. FOB -->
+      <g transform="translate(0, 112)">
+        <text x="20" y="4" fill="var(--pca-ink)" font-size="11.5" font-weight="700" font-family="var(--sl-font-mono)">FOB</text>
+        <line x1="135" y1="0" x2="795" y2="0" stroke="var(--pca-border)" stroke-width="4" stroke-linecap="round" />
+        <line x1="135" y1="0" x2="345" y2="0" stroke="var(--pca-steel)" stroke-width="5" stroke-linecap="round" />
+        <polygon points="345,-7 352,0 345,7 338,0" fill="var(--pca-rust)" />
+        <text x="364" y="4" fill="var(--pca-ink-muted)" font-size="10">仅海运/内河；装船移交风险，买方指定海运</text>
+      </g>
+
+      <!-- 4. CFR -->
+      <g transform="translate(0, 142)">
+        <text x="20" y="4" fill="var(--pca-ink)" font-size="11.5" font-weight="700" font-family="var(--sl-font-mono)">CFR</text>
+        <line x1="135" y1="0" x2="795" y2="0" stroke="var(--pca-border)" stroke-width="4" stroke-linecap="round" />
+        <line x1="135" y1="0" x2="615" y2="0" stroke="var(--pca-steel)" stroke-width="5" stroke-linecap="round" />
+        <polygon points="345,-7 352,0 345,7 338,0" fill="var(--pca-rust)" />
+        <text x="628" y="4" fill="var(--pca-rust)" font-size="10" font-weight="600">风险≠费用！卖方付海运</text>
+      </g>
+
+      <!-- 5. CIF -->
+      <g transform="translate(0, 172)">
+        <text x="20" y="4" fill="var(--pca-ink)" font-size="11.5" font-weight="700" font-family="var(--sl-font-mono)">CIF</text>
+        <line x1="135" y1="0" x2="795" y2="0" stroke="var(--pca-border)" stroke-width="4" stroke-linecap="round" />
+        <line x1="135" y1="0" x2="615" y2="0" stroke="var(--pca-steel)" stroke-width="5" stroke-linecap="round" />
+        <polygon points="345,-7 352,0 345,7 338,0" fill="var(--pca-rust)" />
+        <rect x="444" y="-10" width="96" height="20" rx="4" fill="var(--pca-rust-soft)" stroke="var(--pca-rust)" stroke-width="1" />
+        <text x="492" y="4" text-anchor="middle" fill="var(--pca-rust)" font-size="9.5" font-weight="700" font-family="var(--sl-font-mono)">卖方保 ICC(C)</text>
+        <text x="628" y="4" fill="var(--pca-ink-muted)" font-size="10">装船转风险，卖方付运保</text>
+      </g>
+
+      <!-- 6. CIP -->
+      <g transform="translate(0, 202)">
+        <text x="20" y="4" fill="var(--pca-ink)" font-size="11.5" font-weight="700" font-family="var(--sl-font-mono)">CIP</text>
+        <line x1="135" y1="0" x2="795" y2="0" stroke="var(--pca-border)" stroke-width="4" stroke-linecap="round" />
+        <line x1="135" y1="0" x2="615" y2="0" stroke="var(--pca-steel)" stroke-width="5" stroke-linecap="round" />
+        <polygon points="235,-7 242,0 235,7 228,0" fill="var(--pca-rust)" />
+        <rect x="444" y="-10" width="96" height="20" rx="4" fill="var(--pca-danger-soft)" stroke="var(--pca-danger)" stroke-width="1" />
+        <text x="492" y="4" text-anchor="middle" fill="var(--pca-danger)" font-size="9.5" font-weight="700" font-family="var(--sl-font-mono)">卖方保 ICC(A)</text>
+        <text x="628" y="4" fill="var(--pca-ink-muted)" font-size="10">全运式；(A) 险比 (C) 宽</text>
+      </g>
+
+      <!-- 7. DAP -->
+      <g transform="translate(0, 232)">
+        <text x="20" y="4" fill="var(--pca-ink)" font-size="11.5" font-weight="700" font-family="var(--sl-font-mono)">DAP</text>
+        <line x1="135" y1="0" x2="795" y2="0" stroke="var(--pca-border)" stroke-width="4" stroke-linecap="round" />
+        <line x1="135" y1="0" x2="715" y2="0" stroke="var(--pca-steel)" stroke-width="5" stroke-linecap="round" />
+        <polygon points="715,-7 722,0 715,7 708,0" fill="var(--pca-rust)" />
+        <text x="730" y="4" fill="var(--pca-ink-muted)" font-size="10">不含卸货与关税</text>
+      </g>
+
+      <!-- 8. DPU -->
+      <g transform="translate(0, 262)">
+        <text x="20" y="4" fill="var(--pca-ink)" font-size="11.5" font-weight="700" font-family="var(--sl-font-mono)">DPU</text>
+        <line x1="135" y1="0" x2="795" y2="0" stroke="var(--pca-border)" stroke-width="4" stroke-linecap="round" />
+        <line x1="135" y1="0" x2="756" y2="0" stroke="var(--pca-steel)" stroke-width="5" stroke-linecap="round" />
+        <polygon points="756,-7 763,0 756,7 749,0" fill="var(--pca-rust)" />
+        <text x="770" y="4" fill="var(--pca-ink-muted)" font-size="10">卖方含卸货</text>
+      </g>
+
+      <!-- 9. DDP -->
+      <g transform="translate(0, 292)">
+        <text x="20" y="4" fill="var(--pca-ink)" font-size="11.5" font-weight="700" font-family="var(--sl-font-mono)">DDP</text>
+        <line x1="135" y1="0" x2="795" y2="0" stroke="var(--pca-steel)" stroke-width="5" stroke-linecap="round" />
+        <polygon points="795,-7 802,0 795,7 788,0" fill="var(--pca-rust)" />
+        <text x="530" y="-9" fill="var(--pca-steel)" font-size="10" font-weight="600">卖方包干到门并完税（卖方责任最大）</text>
+      </g>
+
+      <!-- Legend -->
+      <g transform="translate(20, 324)" font-size="10.5" fill="var(--pca-ink-muted)">
+        <line x1="0" y1="-3" x2="24" y2="-3" stroke="var(--pca-steel)" stroke-width="5" stroke-linecap="round" />
+        <text x="32" y="1">卖方承担运费段</text>
+        <polygon points="154,-9 161,-2 154,5 147,-2" fill="var(--pca-rust)" />
+        <text x="169" y="1">风险转移点（注意 CFR/CIF/CIP 风险提前转移）</text>
+        <rect x="444" y="-11" width="14" height="14" rx="3" fill="var(--pca-rust-soft)" stroke="var(--pca-rust)" />
+        <text x="466" y="1">仅 CIF / CIP 强制卖方投保</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption class="pca-diagram__cap">
+    注：依据 ICC Incoterms 2020 公开说明整理（2026-11 核对）。海运另有 FAS、多式联运另有 CPT；具体交货点、保额与卸货责任以买卖合同原文为准。
+  </figcaption>
+</figure>

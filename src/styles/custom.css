@@ -196,18 +196,61 @@ nav.sidebar a[aria-current='page'] {
   background: var(--pca-surface-muted);
 }
 
-/* Native <details> Polish (if used in any Markdown page) */
+/* Native <details> & Recall Answer Reveal Card */
 .sl-markdown-content details {
+  margin: 0.9rem 0 1.25rem;
   border: 1px solid var(--pca-border);
-  border-radius: 0.55rem;
+  border-radius: 0.58rem;
   background: var(--pca-surface);
-  padding: 0.65rem 1rem;
+  overflow: hidden;
+  box-shadow: var(--pca-shadow-sm);
 }
 
 .sl-markdown-content details summary {
   cursor: pointer;
-  font-weight: 600;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.72rem 1rem;
+  font-weight: 650;
+  font-size: 0.9rem;
+  color: var(--pca-rust);
+  background: var(--pca-surface-muted);
+  user-select: none;
+  transition: background-color 140ms ease;
+}
+
+.sl-markdown-content details summary::-webkit-details-marker {
+  display: none;
+}
+
+.sl-markdown-content details summary::before {
+  content: "▸";
+  display: inline-block;
+  font-size: 0.85rem;
+  transition: transform 150ms ease;
+}
+
+.sl-markdown-content details[open] summary {
+  border-bottom: 1px solid var(--pca-border);
+  background: var(--pca-rust-soft);
+}
+
+.sl-markdown-content details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.sl-markdown-content details > :not(summary) {
+  padding: 0.85rem 1.05rem;
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.7;
   color: var(--pca-ink);
+}
+
+.sl-markdown-content details.pca-recall-answer {
+  border-left: 3px solid var(--pca-rust);
 }
 
 /* --------------------------------------------------------------------------
@@ -237,9 +280,9 @@ nav.sidebar a[aria-current='page'] {
 }
 
 [data-has-hero] .hero .tagline {
-  font-size: clamp(1rem, 1.8vw, 1.16rem);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
   color: var(--pca-ink-muted);
-  max-width: 44ch;
+  max-width: 58ch;
   line-height: 1.65;
   text-wrap: balance;
 }
@@ -695,17 +738,506 @@ nav.sidebar a[aria-current='page'] {
 }
 
 /* --------------------------------------------------------------------------
+   Homepage 3-Pillar Maritime Mastery & Workbench Strip
+   -------------------------------------------------------------------------- */
+
+.pca-pillars {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: -0.75rem 0 2.25rem;
+}
+
+.pca-pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.95rem 1.05rem;
+  border-radius: 0.7rem;
+  border: 1px solid var(--pca-border);
+  background: var(--pca-surface);
+  text-decoration: none;
+  box-shadow: var(--pca-shadow-sm);
+  transition: border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+}
+
+.pca-pillar:hover {
+  border-color: var(--pca-rust);
+  transform: translateY(-2px);
+  box-shadow: var(--pca-shadow-md);
+}
+
+.pca-pillar--tool {
+  border-color: var(--pca-rust);
+  background: linear-gradient(135deg, var(--pca-rust-soft), var(--pca-surface));
+}
+
+.pca-pillar__code {
+  font-family: var(--sl-font-mono);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  color: var(--pca-rust);
+}
+
+.pca-pillar__title {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--pca-ink);
+}
+
+.pca-pillar__desc {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--pca-ink-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Maritime Engineering Blueprint SVG Figures (.pca-diagram)
+   -------------------------------------------------------------------------- */
+
+.pca-diagram {
+  margin: 1.5rem 0 1.85rem;
+  border: 1px solid var(--pca-border-strong);
+  border-radius: 0.75rem;
+  background: var(--pca-surface);
+  overflow: hidden;
+  box-shadow: var(--pca-shadow-sm);
+}
+
+.pca-diagram__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem 1rem;
+  padding: 0.62rem 1rem;
+  background: var(--pca-surface-muted);
+  border-bottom: 1px solid var(--pca-border);
+}
+
+.pca-diagram__fig {
+  font-family: var(--sl-font-mono);
+  font-size: 0.74rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  color: var(--pca-rust);
+}
+
+.pca-diagram__hint {
+  font-size: 0.8rem;
+  color: var(--pca-ink-muted);
+}
+
+.pca-diagram__canvas {
+  padding: 0.9rem 0.8rem 0.5rem;
+  background-image:
+    linear-gradient(to right, var(--pca-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--pca-grid-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pca-diagram__canvas svg {
+  display: block;
+  width: 100%;
+  min-width: 620px;
+  height: auto;
+  font-family: var(--sl-font);
+}
+
+.pca-diagram__cap {
+  padding: 0.68rem 1rem;
+  border-top: 1px solid var(--pca-border);
+  background: var(--pca-surface-muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--pca-ink-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Interactive OOG & Mode Sizer Calculator (.pca-calc)
+   -------------------------------------------------------------------------- */
+
+.pca-calc {
+  margin: 1.25rem 0 2rem;
+  border: 1px solid var(--pca-border);
+  border-top: 3px solid var(--pca-rust);
+  border-radius: 0.85rem;
+  background: var(--pca-surface);
+  padding: 1.35rem 1.4rem;
+  box-shadow: var(--pca-shadow-md);
+}
+
+.pca-calc__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.pca-calc__eyebrow {
+  display: block;
+  font-family: var(--sl-font-mono);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  color: var(--pca-rust);
+  margin-bottom: 0.25rem;
+}
+
+.pca-calc__title {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  font-size: 1.2rem;
+  font-weight: 750;
+  color: var(--pca-ink);
+}
+
+.pca-calc__badge {
+  font-family: var(--sl-font-mono);
+  font-size: 0.76rem;
+  color: var(--pca-ink-muted);
+  padding: 0.22rem 0.55rem;
+  border-radius: 0.35rem;
+  border: 1px solid var(--pca-border);
+  background: var(--pca-surface-muted);
+}
+
+.pca-calc__presets {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 1.05rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px dashed var(--pca-border-strong);
+}
+
+.pca-calc__presets-label {
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--pca-ink-muted);
+}
+
+.pca-calc__preset {
+  font-family: var(--sl-font);
+  font-size: 0.8rem;
+  font-weight: 550;
+  padding: 0.34rem 0.68rem;
+  border-radius: 0.45rem;
+  border: 1px solid var(--pca-border);
+  background: var(--pca-surface-muted);
+  color: var(--pca-ink);
+  cursor: pointer;
+  transition: border-color 140ms ease, background-color 140ms ease;
+}
+
+.pca-calc__preset:hover,
+.pca-calc__preset.is-selected {
+  border-color: var(--pca-rust);
+  background: var(--pca-rust-soft);
+  color: var(--pca-ink);
+}
+
+.pca-calc__inputs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.pca-calc__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.32rem;
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--pca-ink-muted);
+}
+
+.pca-calc__field small {
+  font-family: var(--sl-font-mono);
+  font-weight: 500;
+}
+
+.pca-calc__field input {
+  width: 100%;
+  padding: 0.58rem 0.72rem;
+  border-radius: 0.48rem;
+  border: 1px solid var(--pca-border-strong);
+  background: var(--pca-surface-muted);
+  color: var(--pca-ink);
+  font-family: var(--sl-font-mono);
+  font-size: 1rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.pca-calc__field input:focus {
+  outline: 2px solid var(--pca-rust);
+  outline-offset: 1px;
+  border-color: var(--pca-rust);
+}
+
+.pca-calc__toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1.15rem;
+}
+
+.pca-calc__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.78rem;
+  border-radius: 0.48rem;
+  border: 1px solid var(--pca-border);
+  background: var(--pca-surface-muted);
+  font-size: 0.85rem;
+  font-weight: 550;
+  color: var(--pca-ink);
+  cursor: pointer;
+  user-select: none;
+}
+
+.pca-calc__toggle input {
+  accent-color: var(--pca-rust);
+  width: 1rem;
+  height: 1rem;
+}
+
+.pca-calc__toggle--danger:has(input:checked) {
+  border-color: var(--pca-danger);
+  background: var(--pca-danger-soft);
+  color: var(--pca-danger);
+}
+
+.pca-calc__kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.pca-calc__kpi {
+  padding: 0.72rem 0.85rem;
+  border-radius: 0.55rem;
+  border: 1px solid var(--pca-border);
+  background: var(--pca-surface-muted);
+}
+
+.pca-calc__kpi-label {
+  display: block;
+  font-family: var(--sl-font-mono);
+  font-size: 0.72rem;
+  color: var(--pca-ink-muted);
+  margin-bottom: 0.22rem;
+}
+
+.pca-calc__kpi-val {
+  display: block;
+  font-family: var(--sl-font-mono);
+  font-size: 0.96rem;
+  font-weight: 750;
+  color: var(--pca-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.pca-calc__alerts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 1.1rem;
+}
+
+.pca-calc__alert {
+  padding: 0.75rem 0.95rem;
+  border-radius: 0.52rem;
+  border: 1px solid var(--pca-border);
+  border-left-width: 3px;
+  background: var(--pca-surface-muted);
+}
+
+.pca-calc__alert--danger {
+  border-color: var(--pca-danger);
+  background: var(--pca-danger-soft);
+}
+
+.pca-calc__alert--warn {
+  border-left-color: var(--pca-rust);
+  background: var(--pca-rust-soft);
+}
+
+.pca-calc__alert--info {
+  border-left-color: var(--pca-steel);
+  background: var(--pca-steel-soft);
+}
+
+.pca-calc__alert--ok {
+  border-left-color: #2f855a;
+}
+
+.pca-calc__alert strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--pca-ink);
+  margin-bottom: 0.2rem;
+}
+
+.pca-calc__alert--danger strong {
+  color: var(--pca-danger);
+}
+
+.pca-calc__alert p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--pca-ink);
+}
+
+.pca-calc__modes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 0.95rem;
+}
+
+.pca-calc__mode {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.92rem 1rem;
+  border-radius: 0.62rem;
+  border: 1px solid var(--pca-border);
+  background: var(--pca-surface-muted);
+}
+
+.pca-calc__mode--recommended {
+  border-color: var(--pca-rust);
+  background: var(--pca-surface);
+  box-shadow: var(--pca-shadow-sm);
+}
+
+.pca-calc__mode--unsuitable {
+  opacity: 0.68;
+}
+
+.pca-calc__mode-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pca-calc__mode-code {
+  font-family: var(--sl-font-mono);
+  font-size: 0.7rem;
+  font-weight: 750;
+  padding: 0.14rem 0.42rem;
+  border-radius: 0.28rem;
+  background: var(--pca-rust-soft);
+  color: var(--pca-rust);
+  flex-shrink: 0;
+}
+
+.pca-calc__mode--unsuitable .pca-calc__mode-code {
+  background: var(--pca-surface);
+  color: var(--pca-ink-muted);
+}
+
+.pca-calc__mode-top h3 {
+  margin: 0 !important;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--pca-ink);
+  flex: 1;
+}
+
+.pca-calc__mode-pill {
+  font-family: var(--sl-font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.14rem 0.48rem;
+  border-radius: 999px;
+  border: 1px solid var(--pca-border);
+  color: var(--pca-ink-muted);
+  white-space: nowrap;
+}
+
+.pca-calc__mode--recommended .pca-calc__mode-pill {
+  border-color: var(--pca-rust);
+  background: var(--pca-rust);
+  color: #ffffff;
+}
+
+.pca-calc__mode--possible .pca-calc__mode-pill {
+  border-color: var(--pca-steel);
+  color: var(--pca-steel);
+}
+
+.pca-calc__mode p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--pca-ink-muted);
+  flex: 1;
+}
+
+.pca-calc__mode-link {
+  font-size: 0.83rem;
+  font-weight: 650;
+  color: var(--pca-rust);
+  text-decoration: none;
+}
+
+.pca-calc__mode-link:hover {
+  text-decoration: underline;
+}
+
+.pca-calc__disclaimer {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--pca-ink-muted);
+}
+
+/* --------------------------------------------------------------------------
    Mobile "Exhibition Pocket Reference" Optimization
    -------------------------------------------------------------------------- */
 
+@media (max-width: 960px) {
+  .pca-pillars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .pca-router__grid,
-  .pca-home-notes {
+  .pca-home-notes,
+  .pca-calc__modes {
     grid-template-columns: 1fr;
+  }
+
+  .pca-calc__inputs,
+  .pca-calc__kpis {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 640px) {
+  .pca-pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .pca-calc {
+    padding: 1rem 0.95rem;
+  }
+
   .pca-router {
     padding: 1rem 0.95rem;
     border-radius: 0.7rem;
@@ -859,10 +1391,21 @@ nav.sidebar a[aria-current='page'] {
   .sl-markdown-content tr,
   .sl-markdown-content blockquote,
   .pca-router,
+  .pca-diagram,
   .sl-link-card {
     break-inside: avoid;
     page-break-inside: avoid;
     box-shadow: none !important;
+  }
+
+  .pca-diagram__canvas svg {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .pca-calc__presets,
+  .pca-pillars {
+    display: none !important;
   }
 
   a {

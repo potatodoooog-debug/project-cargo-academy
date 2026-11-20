@@ -9,10 +9,14 @@ hero:
     - text: 开始首读
       link: 00-overview/how-to-use/
       icon: right-arrow
+    - text: OOG 运法初判器
+      link: 08-resources/oog-calculator/
+      icon: rocket
+      variant: secondary
     - text: 走一票货
       link: 05-sales-business/worked-example/
       icon: right-arrow
-      variant: secondary
+      variant: minimal
     - text: GitHub 仓库
       link: https://github.com/potatodoooog-debug/project-cargo-academy
       icon: github
@@ -23,6 +27,29 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 import CargoRouter from '../../components/CargoRouter.astro';
 
 <CargoRouter />
+
+<div class="pca-pillars not-content" aria-label="三大核心护城河与交互工具入口">
+  <a class="pca-pillar" href="/project-cargo-academy/03-project-cargo/special-containers/">
+    <span class="pca-pillar__code">CORE 01 · OOG</span>
+    <span class="pca-pillar__title">特种柜 FR / OT 体系</span>
+    <span class="pca-pillar__desc">柜型内尺、吊具层级、killed slots、舱内 12m/4m 与拼床边界</span>
+  </a>
+  <a class="pca-pillar" href="/project-cargo-academy/03-project-cargo/bbk-inquiry/">
+    <span class="pca-pillar__code">CORE 02 · BREAKBULK</span>
+    <span class="pca-pillar__title">件杂重吊与租船条款</span>
+    <span class="pca-pillar__desc">MPP / 重吊联吊、二层柜、装卸与滞期条款、甲板负荷与码头吊重</span>
+  </a>
+  <a class="pca-pillar" href="/project-cargo-academy/03-project-cargo/roro/">
+    <span class="pca-pillar__code">CORE 03 · RO-RO</span>
+    <span class="pca-pillar__title">滚装船与 Mafi 体系</span>
+    <span class="pca-pillar__desc">PCTC / ConRo、自驱与静态货、尾跳板载重与活动甲板净高约束</span>
+  </a>
+  <a class="pca-pillar pca-pillar--tool" href="/project-cargo-academy/08-resources/oog-calculator/">
+    <span class="pca-pillar__code">TOOL · SIZER</span>
+    <span class="pca-pillar__title">OOG 运法初判计算器 →</span>
+    <span class="pca-pillar__desc">输尺寸毛重，10 秒算 CBM、超限厘米数、公路与 DG 红线</span>
+  </a>
+</div>
 
 ## 学习地图（9 个模块）
 

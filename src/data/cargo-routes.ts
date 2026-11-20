@@ -29,6 +29,7 @@ export const CARGO_ROUTES: CargoRoute[] = [
       '尺寸接近临界一律先按超限询，不要自行判成普货；OOG 常常没有普柜免堆，且须同看起运港、中转港、目的港三处吊重。',
     tone: 'accent',
     links: [
+      { label: 'OOG 与运法初判计算器', href: `${BASE}08-resources/oog-calculator/`, tag: '交互工具' },
       { label: '特种柜 FR / OT / Platform', href: `${BASE}03-project-cargo/special-containers/`, tag: '核心口径' },
       { label: '一票货怎么走（机床演练）', href: `${BASE}05-sales-business/worked-example/`, tag: '演练' },
       { label: '询价反问清单', href: `${BASE}05-sales-business/inquiry-checklist/`, tag: '清单' },
@@ -46,6 +47,7 @@ export const CARGO_ROUTES: CargoRoute[] = [
     tone: 'accent',
     links: [
       { label: '件杂货询盘与计费', href: `${BASE}03-project-cargo/bbk-inquiry/`, tag: '询盘计费' },
+      // V3-SLOT: bbk-chartering -> add 03-project-cargo/bbk-vessels-and-chartering/ & 03-project-cargo/risk-insurance-claims/
       { label: '中国主要件杂码头吊重', href: `${BASE}08-resources/bb-terminals/`, tag: '吊重速查' },
       { label: '件杂港口操作', href: `${BASE}03-project-cargo/port-ops/`, tag: '港口经验' },
     ],

@@ -1,0 +1,416 @@
+---
+const BASE = '/project-cargo-academy/';
+---
+
+<section class="pca-calc not-content" data-pca-calc data-base={BASE} aria-labelledby="pca-calc-title">
+  <div class="pca-calc__head">
+    <div>
+      <span class="pca-calc__eyebrow">INTERACTIVE SIZER · OOG / BBK / RO-RO 初判器</span>
+      <h2 id="pca-calc-title" class="pca-calc__title">输入件重体，即时初判柜型、超限幅度与红线</h2>
+    </div>
+    <span class="pca-calc__badge">零后端 · 纯物理口径初筛 · 不报价格</span>
+  </div>
+
+  <!-- Quick Presets -->
+  <div class="pca-calc__presets" role="group" aria-label="典型实票预设样例">
+    <span class="pca-calc__presets-label">一键代入样例：</span>
+    <button type="button" class="pca-calc__preset" data-preset="machine">机床木箱 (1120×240×250 · 18t)</button>
+    <button type="button" class="pca-calc__preset" data-preset="ess">储能一体柜 (606×244×289 · 32t · 锂电)</button>
+    <button type="button" class="pca-calc__preset" data-preset="excavator">履带挖机 (1080×340×335 · 36t · 自驱)</button>
+    <button type="button" class="pca-calc__preset" data-preset="transformer">重型变压器 (850×360×420 · 68t)</button>
+    <button type="button" class="pca-calc__preset" data-preset="std">常规木箱 (300×180×190 · 4.5t)</button>
+  </div>
+
+  <!-- Numeric Inputs -->
+  <div class="pca-calc__inputs">
+    <label class="pca-calc__field">
+      <span>长度 L <small>(cm)</small></span>
+      <input type="number" min="10" max="10000" step="1" value="1120" data-input="length" />
+    </label>
+    <label class="pca-calc__field">
+      <span>宽度 W <small>(cm)</small></span>
+      <input type="number" min="10" max="5000" step="1" value="240" data-input="width" />
+    </label>
+    <label class="pca-calc__field">
+      <span>高度 H <small>(cm)</small></span>
+      <input type="number" min="10" max="3000" step="1" value="250" data-input="height" />
+    </label>
+    <label class="pca-calc__field">
+      <span>单件毛重 GW <small>(吨 MT)</small></span>
+      <input type="number" min="0.1" max="2000" step="0.1" value="18" data-input="weight" />
+    </label>
+  </div>
+
+  <!-- Attribute Toggles -->
+  <div class="pca-calc__toggles" role="group" aria-label="货物附加属性">
+    <label class="pca-calc__toggle">
+      <input type="checkbox" checked data-flag="topLift" />
+      <span>可顶部吊装</span>
+    </label>
+    <label class="pca-calc__toggle">
+      <input type="checkbox" data-flag="selfPropelled" />
+      <span>可自开上下船（带轮/履带）</span>
+    </label>
+    <label class="pca-calc__toggle pca-calc__toggle--danger">
+      <input type="checkbox" data-flag="dgBattery" />
+      <span>含锂电池 / 危险品（DG）</span>
+    </label>
+    <label class="pca-calc__toggle">
+      <input type="checkbox" data-flag="floatable" />
+      <span>可浮水（船艇/海工模块）</span>
+    </label>
+  </div>
+
+  <!-- KPI Summary Strip -->
+  <div class="pca-calc__kpis">
+    <div class="pca-calc__kpi">
+      <span class="pca-calc__kpi-label">单件体积</span>
+      <strong class="pca-calc__kpi-val" data-out="cbm">67.20 CBM</strong>
+    </div>
+    <div class="pca-calc__kpi">
+      <span class="pca-calc__kpi-label">底面积均布负荷</span>
+      <strong class="pca-calc__kpi-val" data-out="load">0.67 t/m²</strong>
+    </div>
+    <div class="pca-calc__kpi">
+      <span class="pca-calc__kpi-label">预估 OOG 标签</span>
+      <strong class="pca-calc__kpi-val" data-out="oogTag">OW + OH</strong>
+    </div>
+    <div class="pca-calc__kpi">
+      <span class="pca-calc__kpi-label">优先初判方向</span>
+      <strong class="pca-calc__kpi-val" data-out="primaryMode">40'FR / 同步询 OT</strong>
+    </div>
+  </div>
+
+  <!-- Guardrails / Alerts -->
+  <div class="pca-calc__alerts" data-out="alerts"></div>
+
+  <!-- Ranked Mode Recommendations -->
+  <div class="pca-calc__modes" data-out="modes"></div>
+
+  <p class="pca-calc__disclaimer">
+    说明：本工具基于 Hapag-Lloyd 公开集装箱规格、交通运输部 2016/62 号令及站内培训经验门槛进行初筛演练，不输出任何运价。不同船东箱批、甲板承重与口岸吊重存在差异，实操一律以箱体 CSC 铭牌及船东书面确认为准。
+  </p>
+</section>
+
+<script>
+  type PresetKey = 'machine' | 'ess' | 'excavator' | 'transformer' | 'std';
+
+  const PRESETS: Record<
+    PresetKey,
+    { l: number; w: number; h: number; gw: number; topLift: boolean; selfPropelled: boolean; dgBattery: boolean; floatable: boolean }
+  > = {
+    machine: { l: 1120, w: 240, h: 250, gw: 18, topLift: true, selfPropelled: false, dgBattery: false, floatable: false },
+    ess: { l: 606, w: 244, h: 289, gw: 32, topLift: true, selfPropelled: false, dgBattery: true, floatable: false },
+    excavator: { l: 1080, w: 340, h: 335, gw: 36, topLift: false, selfPropelled: true, dgBattery: false, floatable: false },
+    transformer: { l: 850, w: 360, h: 420, gw: 68, topLift: true, selfPropelled: false, dgBattery: false, floatable: false },
+    std: { l: 300, w: 180, h: 190, gw: 4.5, topLift: false, selfPropelled: false, dgBattery: false, floatable: false },
+  };
+
+  interface ModeCard {
+    code: string;
+    title: string;
+    status: 'recommended' | 'possible' | 'unsuitable';
+    statusLabel: string;
+    reason: string;
+    href: string;
+    linkText: string;
+  }
+
+  interface AlertItem {
+    level: 'danger' | 'warn' | 'info';
+    title: string;
+    body: string;
+  }
+
+  function initOogCalculators() {
+    document.querySelectorAll<HTMLElement>('[data-pca-calc]').forEach((root) => {
+      if (root.dataset.bound === 'true') return;
+      root.dataset.bound = 'true';
+
+      const base = root.dataset.base || '/project-cargo-academy/';
+      const elL = root.querySelector<HTMLInputElement>('[data-input="length"]')!;
+      const elW = root.querySelector<HTMLInputElement>('[data-input="width"]')!;
+      const elH = root.querySelector<HTMLInputElement>('[data-input="height"]')!;
+      const elGW = root.querySelector<HTMLInputElement>('[data-input="weight"]')!;
+
+      const flTop = root.querySelector<HTMLInputElement>('[data-flag="topLift"]')!;
+      const flSelf = root.querySelector<HTMLInputElement>('[data-flag="selfPropelled"]')!;
+      const flDg = root.querySelector<HTMLInputElement>('[data-flag="dgBattery"]')!;
+      const flFloat = root.querySelector<HTMLInputElement>('[data-flag="floatable"]')!;
+
+      const outCbm = root.querySelector<HTMLElement>('[data-out="cbm"]')!;
+      const outLoad = root.querySelector<HTMLElement>('[data-out="load"]')!;
+      const outTag = root.querySelector<HTMLElement>('[data-out="oogTag"]')!;
+      const outPrimary = root.querySelector<HTMLElement>('[data-out="primaryMode"]')!;
+      const outAlerts = root.querySelector<HTMLElement>('[data-out="alerts"]')!;
+      const outModes = root.querySelector<HTMLElement>('[data-out="modes"]')!;
+
+      const render = () => {
+        const l = Math.max(1, Number(elL.value) || 0);
+        const w = Math.max(1, Number(elW.value) || 0);
+        const h = Math.max(1, Number(elH.value) || 0);
+        const gw = Math.max(0.01, Number(elGW.value) || 0);
+
+        const topLift = flTop.checked;
+        const selfPropelled = flSelf.checked;
+        const dgBattery = flDg.checked;
+        const floatable = flFloat.checked;
+
+        const lm = l / 100;
+        const wm = w / 100;
+        const hm = h / 100;
+        const cbm = lm * wm * hm;
+        const footprint = lm * wm;
+        const deckLoad = footprint > 0 ? gw / footprint : 0;
+
+        // Standard container fit checks (Hapag-Lloyd ref: 20GP 589x234x228, 40HQ 1202x234x259)
+        const fits20GP = l <= 589 && w <= 234 && h <= 228 && gw <= 28;
+        const fits40GP = l <= 1202 && w <= 234 && h <= 228 && gw <= 26.5;
+        const fits40HQ = l <= 1202 && w <= 234 && h <= 259 && gw <= 26.5;
+        const fitsStandard = fits20GP || fits40GP || fits40HQ;
+
+        // OOG tags relative to 40'FR / 40'OT thresholds
+        const overW = w > 235 ? Math.round(w - 235) : 0;
+        const overH_FR = h > 226 ? Math.round(h - 226) : 0;
+        const overH_OT = h > 234 ? Math.round(h - 234) : 0;
+        const overL_FR = l > 1165 ? Math.round(l - 1165) : 0;
+
+        const tags: string[] = [];
+        if (overL_FR > 0) tags.push(`OL +${overL_FR}cm`);
+        if (overW > 0) tags.push(`OW +${overW}cm`);
+        if (!fitsStandard && overH_FR > 0) tags.push(`OH +${overH_FR}cm`);
+        const oogLabel = fitsStandard ? 'IG（标准柜内）' : tags.length ? tags.join(' / ') : '临界待核（按 OOG 问）';
+
+        // OT check
+        const otWidthOk = w <= 235 && (!topLift || w <= 223);
+        const otLenOk = l <= 1202;
+        const otWeightOk = gw <= (l <= 589 ? 30 : 28.4);
+        const otFeasible = !fitsStandard && otWidthOk && otLenOk && otWeightOk && h <= 400;
+
+        // FR check
+        const frPanelsUpOk = l <= 1165 && w <= 500 && gw <= (l <= 563 ? 30 : 40);
+        const frPanelsDownOk = l > 1165 && l <= 1400 && w <= 500 && gw <= 40;
+        const frFeasible = !fitsStandard && (frPanelsUpOk || frPanelsDownOk) && h <= 430;
+
+        // Ro-Ro check
+        const roroDirect = selfPropelled && h <= 630 && w <= 1150 && gw <= 350;
+        const roroMafi = !selfPropelled && !fitsStandard && h <= 560 && w <= 600 && gw <= 150 && l <= 2000;
+
+        // Breakbulk check
+        const bbkPrimary = !fitsStandard && (!frFeasible || gw > 40 || w > 450 || h > 400 || l > 1400);
+
+        // Determine primary summary
+        let primaryText = '待综合比选';
+        if (dgBattery && gw > 28) {
+          primaryText = 'DG 专项 + 重柜/特种/件杂';
+        } else if (fitsStandard) {
+          primaryText = fits20GP ? "20'GP 标准柜" : fits40GP ? "40'GP 标准柜" : "40'HQ 高柜";
+        } else if (floatable && gw > 100) {
+          primaryText = '半潜船 / 重吊件杂';
+        } else if (roroDirect) {
+          primaryText = frFeasible ? "Ro-Ro 自驱 / 对比 40'FR" : 'Ro-Ro 滚装（或件杂）';
+        } else if (bbkPrimary) {
+          primaryText = gw > 80 ? '重吊船 Heavy Lift / MPP' : 'Breakbulk 件杂船';
+        } else if (otFeasible && frFeasible) {
+          primaryText = "OT / FR 同步询价";
+        } else if (otFeasible) {
+          primaryText = l <= 589 ? "20'OT 开顶柜" : "40'OT 开顶柜";
+        } else if (frFeasible) {
+          primaryText = l <= 563 ? "20'FR 框架柜" : "40'FR 框架柜";
+        } else {
+          primaryText = 'Breakbulk 件杂船';
+        }
+
+        // Alerts
+        const alerts: AlertItem[] = [];
+        if (dgBattery) {
+          alerts.push({
+            level: 'danger',
+            title: '锂电池 / DG 强制红线已触发',
+            body: '资料不齐（UN 编号、SDS、UN38.3、适运证明、危包证、SOC）严禁订舱与锁期；按「OOG/重件 + DG」双流程并行评估。',
+          });
+        }
+        // Road over-dimension check (MOT 2016/62: H > 4.0m with ~1.15m trailer deck, W > 2.55m, L > 18.1m)
+        const estTruckH = hm + 1.15;
+        if (w > 255 || l > 1810 || estTruckH > 4.0) {
+          const reasons: string[] = [];
+          if (estTruckH > 4.0) reasons.push(`货高 ${hm.toFixed(2)}m + 常规车板约 1.15m ≈ ${estTruckH.toFixed(2)}m（超 4.0m 红线）`);
+          if (w > 255) reasons.push(`宽 ${wm.toFixed(2)}m（超 2.55m）`);
+          if (l > 1810) reasons.push(`长 ${lm.toFixed(2)}m（超 18.1m 车货总长）`);
+          alerts.push({
+            level: 'warn',
+            title: '国内公路段触发超限红线（交通运输部 62 号令）',
+            body: `${reasons.join('；')}。须提前核实低板车/轴线车、桥梁限高与大件运输许可。`,
+          });
+        }
+        if (l > 1200 || h > 400) {
+          alerts.push({
+            level: 'warn',
+            title: '大概率无法配舱内（Under Deck）→ 重点核对甲板险',
+            body: '参考口径：长超 ~12m 或高超 ~4m 常只能配甲板（On Deck）。务必书面确认客户接受甲板，并提前核对货运险甲板条款与承运人甲板免责风险。',
+          });
+        }
+        if (frPanelsDownOk && w > 208) {
+          alerts.push({
+            level: 'warn',
+            title: 'FR 挡板放下吊点遮挡风险',
+            body: `当前宽 ${wm.toFixed(2)}m 超过培训口径两吊点间距 ~2.08m，若挡板放下会挡住常规吊点，码头常需改钢丝绳吊装，费用更难估。`,
+          });
+        }
+        if (deckLoad > 4.0) {
+          alerts.push({
+            level: 'info',
+            title: `底面积均布负荷偏高（${deckLoad.toFixed(2)} t/m² > 4.0 t/m²）`,
+            body: '高于培训甲板均布门槛参考值（约 4 t/m²），走件杂放甲板或框架柜短支承时，常需铺设垫木/钢板摊薄负荷（Load Spreading），且 FR 实际许用载荷会低于理论最大值。',
+          });
+        }
+        if (floatable) {
+          alerts.push({
+            level: 'info',
+            title: '可浮水重大件备选：半潜船（Semi-submersible）',
+            body: '若具备浮装浮卸条件，除重吊船外可同步询半潜船船东，提前准备吃水、三边尺寸与重量资料。',
+          });
+        }
+
+        // Candidate mode cards
+        const modes: ModeCard[] = [];
+
+        // 1. Standard Container
+        modes.push({
+          code: 'DRY',
+          title: fits20GP ? "标准普柜（20'GP 可装）" : fits40GP ? "标准普柜（40'GP 可装）" : fits40HQ ? "标准高柜（40'HQ 可装）" : '标准集装箱（20GP / 40HQ）',
+          status: fitsStandard ? 'recommended' : 'unsuitable',
+          statusLabel: fitsStandard ? '首选可行' : '已超限界',
+          reason: fitsStandard
+            ? `尺寸与重量落在常规干箱参考门尺内（内宽 ~2.35m / 门高 2.29–2.60m）。${dgBattery ? '注意：含锂电不能按普货订舱，必须走 DG 审核！' : '可按标准集装箱询价，若靠近临界值仍须核对包装后实测与装箱余量。'}`
+            : `超出标准柜参考门尺或常见载重（宽 ${wm.toFixed(2)}m / 高 ${hm.toFixed(2)}m / 长 ${lm.toFixed(2)}m / 重 ${gw}t），先离开普柜看特种柜或非柜路径。`,
+          href: `${base}02-freight-forwarding/containers/`,
+          linkText: '查看集装箱规格与 VGM',
+        });
+
+        // 2. Open Top
+        modes.push({
+          code: 'OT',
+          title: l <= 589 ? "20'OT 开顶柜" : "40'OT / 40'HC-OT 开顶柜",
+          status: otFeasible ? (frFeasible ? 'possible' : 'recommended') : 'unsuitable',
+          statusLabel: otFeasible ? '可询候选' : '不适用',
+          reason: otFeasible
+            ? `宽度在箱内范围，可解决超高或顶吊需求（${overH_OT > 0 ? `较 40'OT 内高超高约 ${overH_OT}cm` : '高度接近临界，按超限核实'}）。顶吊需确认顶口净宽（约 2.19–2.23m）及帆布方案。`
+            : w > 235
+              ? `货宽 ${wm.toFixed(2)}m 超过开顶柜内宽（~2.35m），无法装入侧壁之间，需改看 FR 或件杂。`
+              : `超出 OT 长度/重量或高度边界（长 ${lm.toFixed(2)}m / 重 ${gw}t）。`,
+          href: `${base}03-project-cargo/special-containers/`,
+          linkText: '查看特种柜 OT / FR 口径',
+        });
+
+        // 3. Flat Rack
+        modes.push({
+          code: 'FR',
+          title: l <= 563 ? "20'FR 框架柜" : "40'FR 框架柜",
+          status: frFeasible ? (bbkPrimary ? 'possible' : 'recommended') : 'unsuitable',
+          statusLabel: frFeasible ? (bbkPrimary ? '备选对比' : '重点候选') : '超出建议界',
+          reason: frFeasible
+            ? `${frPanelsUpOk ? '可按挡板竖起（panels up）询价' : '需按挡板放下（panels down）询价'}；预估 ${tags.length ? tags.join(' / ') : 'IG/临界'}。务必同时询 killed slots、吊具/钢丝绳码头吊卸、OOG 免堆与三港吊重。`
+            : `尺寸或重量超出常见单只框架柜舒适区（宽 ${wm.toFixed(2)}m / 长 ${lm.toFixed(2)}m / 重 ${gw}t），建议直接评估件杂船或 FR 拼床（Bedstead）对比。`,
+          href: `${base}03-project-cargo/special-containers/`,
+          linkText: '查看 FR 规格、吊具与拼床边界',
+        });
+
+        // 4. Ro-Ro
+        modes.push({
+          code: 'RORO',
+          title: selfPropelled ? 'Ro-Ro 滚装（自驱上船）' : 'Ro-Ro 滚装（Mafi 滚装板）',
+          status: roroDirect ? 'recommended' : roroMafi ? 'possible' : 'unsuitable',
+          statusLabel: roroDirect ? '强烈推荐' : roroMafi ? '可行备选' : '通常不优先',
+          reason: roroDirect
+            ? `可自开上下船，天然适配 PCTC / Ro-Ro 滚装船；核对尾跳板载重（100–375t）、主甲板净高（5.0–6.5m）、坡度离地间隙及装港收货规则。`
+            : roroMafi
+              ? `静态重件可评估配 Mafi 滚装板（板高 0.6–0.9m，载重 60–200t，计入总重 CGW），注意确认目标航线与装港是否接 Mafi。`
+              : `尺寸/重量超过常规滚装主甲板净高或自重限制，或普柜已更经济。`,
+          href: `${base}03-project-cargo/roro/`,
+          linkText: '查看滚装船型、Mafi 与约束',
+        });
+
+        // 5. Breakbulk / Heavy Lift
+        modes.push({
+          code: 'BBK',
+          title: gw > 80 ? '重吊船（Heavy Lift）/ MPP 联吊' : 'Breakbulk 件杂 / 多用途船（MPP）',
+          status: bbkPrimary ? 'recommended' : fitsStandard ? 'unsuitable' : 'possible',
+          statusLabel: bbkPrimary ? '主力方案' : fitsStandard ? '无需件杂' : 'B 方案备份',
+          reason: bbkPrimary
+            ? `单件重 ${gw}t 或三边超限明显，应直接走件杂/重吊方案；报价前确认实货/投标性质、装卸条款原文（FLT/FILO/FIO/FIOST）、码头吊重与舱内/甲板要求。`
+            : fitsStandard
+              ? '标准集装箱已可承运，单件通常无需走件杂船。'
+              : '可与特种柜（FR/OT）并列做方案 A/B 对比，多件混装或 OOG 附加费过高时件杂更具性价比。',
+          href: `${base}03-project-cargo/bbk-inquiry/`,
+          linkText: '查看件杂询盘、计费与条款',
+        });
+
+        // Sort: recommended -> possible -> unsuitable
+        const rank = { recommended: 0, possible: 1, unsuitable: 2 };
+        modes.sort((a, b) => rank[a.status] - rank[b.status]);
+
+        outCbm.textContent = `${cbm.toFixed(2)} CBM`;
+        outLoad.textContent = `${deckLoad.toFixed(2)} t/m²`;
+        outTag.textContent = oogLabel;
+        outPrimary.textContent = primaryText;
+
+        outAlerts.innerHTML = alerts.length
+          ? alerts
+              .map(
+                (a) => `
+              <div class="pca-calc__alert pca-calc__alert--${a.level}">
+                <strong>${a.title}</strong>
+                <p>${a.body}</p>
+              </div>`
+              )
+              .join('')
+          : `<div class="pca-calc__alert pca-calc__alert--ok"><strong>未触发明显红线预警</strong><p>当前参数在常规参考线内；正式报价前仍须核对最终包装实测尺寸、照片、装箱单与 Incoterms。</p></div>`;
+
+        outModes.innerHTML = modes
+          .map(
+            (m) => `
+            <article class="pca-calc__mode pca-calc__mode--${m.status}">
+              <div class="pca-calc__mode-top">
+                <span class="pca-calc__mode-code">${m.code}</span>
+                <h3>${m.title}</h3>
+                <span class="pca-calc__mode-pill">${m.statusLabel}</span>
+              </div>
+              <p>${m.reason}</p>
+              <a class="pca-calc__mode-link" href="${m.href}">${m.linkText} →</a>
+            </article>`
+          )
+          .join('');
+      };
+
+      [elL, elW, elH, elGW, flTop, flSelf, flDg, flFloat].forEach((el) => {
+        el.addEventListener('input', render);
+        el.addEventListener('change', render);
+      });
+
+      root.querySelectorAll<HTMLButtonElement>('[data-preset]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const key = btn.dataset.preset as PresetKey;
+          const p = PRESETS[key];
+          if (!p) return;
+          elL.value = String(p.l);
+          elW.value = String(p.w);
+          elH.value = String(p.h);
+          elGW.value = String(p.gw);
+          flTop.checked = p.topLift;
+          flSelf.checked = p.selfPropelled;
+          flDg.checked = p.dgBattery;
+          flFloat.checked = p.floatable;
+          root.querySelectorAll('.pca-calc__preset').forEach((b) => b.classList.remove('is-selected'));
+          btn.classList.add('is-selected');
+          render();
+        });
+      });
+
+      render();
+    });
+  }
+
+  initOogCalculators();
+  document.addEventListener('astro:after-swap', initOogCalculators);
+</script>

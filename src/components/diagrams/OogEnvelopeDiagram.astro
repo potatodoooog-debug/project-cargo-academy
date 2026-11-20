@@ -1,0 +1,101 @@
+---
+---
+<figure class="pca-diagram not-content">
+  <div class="pca-diagram__bar">
+    <span class="pca-diagram__fig">FIG 01 · OOG ENVELOPE & ROAD LIMITS</span>
+    <span class="pca-diagram__hint">普柜 / OT / FR 断面与国内公路超限红线对比（单位：m）</span>
+  </div>
+  <div class="pca-diagram__canvas">
+    <svg viewBox="0 0 840 315" role="img" aria-label="标准柜、开顶柜、框架柜断面尺寸与公路限高对比蓝图" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="pca-arr-steel" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="var(--pca-steel)" />
+        </marker>
+        <marker id="pca-arr-rust" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="var(--pca-rust)" />
+        </marker>
+        <marker id="pca-arr-danger" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="var(--pca-danger)" />
+        </marker>
+      </defs>
+
+      <!-- Baseline ground -->
+      <line x1="20" y1="260" x2="820" y2="260" stroke="var(--pca-border-strong)" stroke-width="1.5" stroke-dasharray="4 4" />
+
+      <!-- 1. 40'HQ Standard -->
+      <g transform="translate(36, 40)">
+        <text x="68" y="0" text-anchor="middle" fill="var(--pca-ink)" font-size="12.5" font-weight="700">40'HQ 普高柜</text>
+        <text x="68" y="16" text-anchor="middle" fill="var(--pca-ink-muted)" font-size="10.5" font-family="var(--sl-font-mono)">内长 ~12.03m</text>
+        <!-- Outer box -->
+        <rect x="18" y="84" width="100" height="136" rx="3" fill="var(--pca-surface-muted)" stroke="var(--pca-steel)" stroke-width="2" />
+        <!-- Door opening -->
+        <rect x="26" y="96" width="84" height="116" fill="none" stroke="var(--pca-steel)" stroke-width="1" stroke-dasharray="3 3" />
+        <!-- Width dim -->
+        <line x1="18" y1="234" x2="118" y2="234" stroke="var(--pca-steel)" stroke-width="1.2" marker-start="url(#pca-arr-steel)" marker-end="url(#pca-arr-steel)" />
+        <text x="68" y="250" text-anchor="middle" fill="var(--pca-steel)" font-size="10.5" font-family="var(--sl-font-mono)">门宽 2.34m</text>
+        <!-- Height dim -->
+        <line x1="128" y1="96" x2="128" y2="212" stroke="var(--pca-steel)" stroke-width="1.2" marker-start="url(#pca-arr-steel)" marker-end="url(#pca-arr-steel)" />
+        <text x="134" y="158" fill="var(--pca-steel)" font-size="10.5" font-family="var(--sl-font-mono)">门高 2.60m</text>
+        <text x="68" y="158" text-anchor="middle" fill="var(--pca-ink-muted)" font-size="10.5">关门即走</text>
+      </g>
+
+      <!-- 2. 40'OT Open Top -->
+      <g transform="translate(232, 40)">
+        <text x="68" y="0" text-anchor="middle" fill="var(--pca-ink)" font-size="12.5" font-weight="700">40'OT 开顶柜</text>
+        <text x="68" y="16" text-anchor="middle" fill="var(--pca-ink-muted)" font-size="10.5" font-family="var(--sl-font-mono)">顶口宽 ~2.23m</text>
+        <!-- Overheight zone -->
+        <rect x="30" y="50" width="76" height="44" rx="2" fill="var(--pca-rust-soft)" stroke="var(--pca-rust)" stroke-width="1.5" stroke-dasharray="4 3" />
+        <text x="68" y="75" text-anchor="middle" fill="var(--pca-rust)" font-size="10.5" font-weight="700" font-family="var(--sl-font-mono)">OH 超高区</text>
+        <!-- Open-top shell (U-shape) -->
+        <path d="M 18 94 L 18 220 L 118 220 L 118 94" fill="var(--pca-surface-muted)" stroke="var(--pca-steel)" stroke-width="2.2" />
+        <!-- Tarpaulin dashed line -->
+        <line x1="18" y1="94" x2="118" y2="94" stroke="var(--pca-rust)" stroke-width="1.4" stroke-dasharray="5 3" />
+        <text x="68" y="148" text-anchor="middle" fill="var(--pca-ink)" font-size="10.5">可顶部吊入</text>
+        <text x="68" y="164" text-anchor="middle" fill="var(--pca-ink-muted)" font-size="10">不可超宽</text>
+        <text x="68" y="250" text-anchor="middle" fill="var(--pca-steel)" font-size="10.5" font-family="var(--sl-font-mono)">内宽 ~2.35m</text>
+      </g>
+
+      <!-- 3. 40'FR Flat Rack -->
+      <g transform="translate(424, 40)">
+        <text x="84" y="0" text-anchor="middle" fill="var(--pca-ink)" font-size="12.5" font-weight="700">40'FR 框架柜</text>
+        <text x="84" y="16" text-anchor="middle" fill="var(--pca-ink-muted)" font-size="10.5" font-family="var(--sl-font-mono)">内长 ~11.65m · 吊点宽 2.08m</text>
+        <!-- OOG Cargo OW+OH -->
+        <rect x="14" y="54" width="140" height="132" rx="3" fill="var(--pca-rust-soft)" stroke="var(--pca-rust)" stroke-width="1.6" stroke-dasharray="4 3" />
+        <text x="84" y="102" text-anchor="middle" fill="var(--pca-rust)" font-size="11" font-weight="700" font-family="var(--sl-font-mono)">OW + OH</text>
+        <text x="84" y="120" text-anchor="middle" fill="var(--pca-ink)" font-size="10.5">两侧/顶部外探</text>
+        <text x="84" y="136" text-anchor="middle" fill="var(--pca-ink-muted)" font-size="10">占邻箱位 killed slots</text>
+        <!-- Heavy floor platform (648mm thick) -->
+        <rect x="34" y="186" width="100" height="34" rx="2" fill="var(--pca-steel-soft)" stroke="var(--pca-steel)" stroke-width="2.2" />
+        <text x="84" y="207" text-anchor="middle" fill="var(--pca-steel)" font-size="10" font-weight="700" font-family="var(--sl-font-mono)">底板厚 ~0.65m</text>
+        <!-- Under-deck ref line -->
+        <line x1="6" y1="36" x2="164" y2="36" stroke="var(--pca-rust)" stroke-width="1.2" stroke-dasharray="3 3" />
+        <text x="84" y="32" text-anchor="middle" fill="var(--pca-rust)" font-size="9.5" font-family="var(--sl-font-mono)">舱内参考：L≤12m / H≤4m</text>
+        <text x="84" y="250" text-anchor="middle" fill="var(--pca-rust)" font-size="10.5" font-family="var(--sl-font-mono)">整车超宽常需件杂/低板</text>
+      </g>
+
+      <!-- 4. China Road Over-Dimension Limits -->
+      <g transform="translate(642, 40)">
+        <text x="80" y="0" text-anchor="middle" fill="var(--pca-danger)" font-size="12.5" font-weight="700">公路超限红线（62号令）</text>
+        <text x="80" y="16" text-anchor="middle" fill="var(--pca-ink-muted)" font-size="10.5" font-family="var(--sl-font-mono)">车货总长 &gt; 18.1m 超限</text>
+        <!-- 4.0m height ceiling -->
+        <line x1="8" y1="54" x2="152" y2="54" stroke="var(--pca-danger)" stroke-width="1.8" stroke-dasharray="6 3" />
+        <text x="80" y="47" text-anchor="middle" fill="var(--pca-danger)" font-size="10.5" font-weight="700" font-family="var(--sl-font-mono)">总高红线 4.0m</text>
+        <!-- Cargo on trailer -->
+        <rect x="28" y="64" width="104" height="106" rx="3" fill="var(--pca-danger-soft)" stroke="var(--pca-danger)" stroke-width="1.5" />
+        <text x="80" y="112" text-anchor="middle" fill="var(--pca-ink)" font-size="10.5" font-weight="600">货物 + 包装</text>
+        <text x="80" y="128" text-anchor="middle" fill="var(--pca-danger)" font-size="10" font-family="var(--sl-font-mono)">总宽 &gt; 2.55m 需许可</text>
+        <!-- Trailer bed + wheels -->
+        <rect x="20" y="170" width="120" height="22" rx="2" fill="var(--pca-surface-muted)" stroke="var(--pca-border-strong)" stroke-width="1.8" />
+        <text x="80" y="185" text-anchor="middle" fill="var(--pca-ink-muted)" font-size="9.5">低板车底板约 0.8–1.2m</text>
+        <circle cx="42" cy="206" r="13" fill="var(--pca-surface)" stroke="var(--pca-border-strong)" stroke-width="2" />
+        <circle cx="118" cy="206" r="13" fill="var(--pca-surface)" stroke="var(--pca-border-strong)" stroke-width="2" />
+        <!-- Vertical height dim -->
+        <line x1="158" y1="54" x2="158" y2="218" stroke="var(--pca-danger)" stroke-width="1.2" marker-start="url(#pca-arr-danger)" marker-end="url(#pca-arr-danger)" />
+        <text x="80" y="250" text-anchor="middle" fill="var(--pca-danger)" font-size="10.5" font-family="var(--sl-font-mono)">高速限高 ~5m · 4.5m 换低板</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption class="pca-diagram__cap">
+    注：柜型参考值核对自 Hapag-Lloyd 公开集装箱规格手册（2026-11），公路红线引自交通运输部令 2016 年第 62 号（2021 年第 12 号修订）。不同箱批尺寸与载荷以具体箱体 CSC 铭牌及船东书面确认为准。
+  </figcaption>
+</figure>

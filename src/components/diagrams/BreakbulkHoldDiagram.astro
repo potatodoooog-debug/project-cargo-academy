@@ -1,0 +1,77 @@
+---
+---
+<figure class="pca-diagram not-content">
+  <div class="pca-diagram__bar">
+    <span class="pca-diagram__fig">FIG 02 · MPP / HEAVY LIFT VESSEL CROSS-SECTION</span>
+    <span class="pca-diagram__hint">多用途船 / 重吊船联吊（Tandem Lift）、二层柜与舱底积载剖面</span>
+  </div>
+  <div class="pca-diagram__canvas">
+    <svg viewBox="0 0 840 320" role="img" aria-label="多用途船与重吊船联吊、二层柜与甲板负荷剖面蓝图" xmlns="http://www.w3.org/2000/svg">
+      <!-- Twin Shipboard Cranes -->
+      <g stroke="var(--pca-steel)" stroke-width="2" fill="none">
+        <!-- Left Crane Pedestal & Boom -->
+        <rect x="64" y="66" width="24" height="92" rx="2" fill="var(--pca-surface-muted)" />
+        <line x1="76" y1="66" x2="275" y2="24" stroke-width="3" />
+        <!-- Right Crane Pedestal & Boom -->
+        <rect x="536" y="66" width="24" height="92" rx="2" fill="var(--pca-surface-muted)" />
+        <line x1="548" y1="66" x2="365" y2="24" stroke-width="3" />
+        <!-- Hoist Wires -->
+        <line x1="275" y1="24" x2="275" y2="70" stroke="var(--pca-rust)" stroke-width="1.8" stroke-dasharray="3 2" />
+        <line x1="365" y1="24" x2="365" y2="70" stroke="var(--pca-rust)" stroke-width="1.8" stroke-dasharray="3 2" />
+      </g>
+
+      <!-- Spreader Bar & Suspended Heavy Lift Cargo -->
+      <rect x="250" y="70" width="140" height="10" rx="2" fill="var(--pca-rust)" />
+      <line x1="268" y1="80" x2="268" y2="100" stroke="var(--pca-rust)" stroke-width="1.6" />
+      <line x1="372" y1="80" x2="372" y2="100" stroke="var(--pca-rust)" stroke-width="1.6" />
+      <rect x="258" y="100" width="124" height="36" rx="3" fill="var(--pca-rust-soft)" stroke="var(--pca-rust)" stroke-width="1.8" />
+      <text x="320" y="122" text-anchor="middle" fill="var(--pca-rust)" font-size="11" font-weight="700" font-family="var(--sl-font-mono)">TANDEM LIFT 重件</text>
+      <text x="320" y="18" text-anchor="middle" fill="var(--pca-ink)" font-size="11" font-weight="600">双吊联吊 + 平衡梁（Spreader Bar）</text>
+
+      <!-- Hull Outer Silhouette -->
+      <path d="M 48 158 L 576 158 L 552 292 L 72 292 Z" fill="var(--pca-surface-muted)" stroke="var(--pca-steel)" stroke-width="2.2" />
+      <!-- Hatch Coaming & Deck -->
+      <rect x="116" y="144" width="408" height="14" fill="var(--pca-surface)" stroke="var(--pca-steel)" stroke-width="1.8" />
+      <text x="160" y="138" fill="var(--pca-ink-muted)" font-size="10" font-family="var(--sl-font-mono)">HATCH OPENING 舱口</text>
+
+      <!-- Cargo Hold Inner Cavity -->
+      <rect x="122" y="158" width="396" height="120" fill="var(--pca-surface)" stroke="var(--pca-border-strong)" stroke-width="1.4" />
+
+      <!-- Tweendeck (Removable Intermediate Deck) -->
+      <line x1="122" y1="214" x2="518" y2="214" stroke="var(--pca-steel)" stroke-width="3.5" stroke-dasharray="14 4" />
+      <text x="134" y="182" fill="var(--pca-ink)" font-size="11.5" font-weight="700">二层柜（Tweendeck · 可拆装调节）</text>
+      <text x="134" y="199" fill="var(--pca-ink-muted)" font-size="10.5">分层隔离轻泡/设备，防下层受压；高件可拆走二层板通高装舱</text>
+
+      <!-- Lower Hold / Tank Top Cargo -->
+      <rect x="142" y="230" width="110" height="40" rx="3" fill="var(--pca-steel-soft)" stroke="var(--pca-steel)" stroke-width="1.5" />
+      <text x="197" y="254" text-anchor="middle" fill="var(--pca-steel)" font-size="10.5" font-weight="700">重件 / 卷钢舱底</text>
+      <rect x="278" y="236" width="130" height="34" rx="3" fill="var(--pca-rust-soft)" stroke="var(--pca-rust)" stroke-width="1.4" />
+      <text x="343" y="257" text-anchor="middle" fill="var(--pca-rust)" font-size="10.5" font-weight="600">垫木摊薄 + 焊接绑扎</text>
+      <text x="466" y="255" text-anchor="middle" fill="var(--pca-ink-muted)" font-size="10" font-family="var(--sl-font-mono)">TANK TOP</text>
+
+      <!-- Right Side Engineering Callout Panel -->
+      <g transform="translate(602, 42)">
+        <rect x="0" y="0" width="218" height="250" rx="6" fill="var(--pca-surface)" stroke="var(--pca-border)" stroke-width="1.3" />
+        <text x="14" y="24" fill="var(--pca-rust)" font-size="11" font-weight="700" font-family="var(--sl-font-mono)">KEY CHECKPOINTS</text>
+
+        <text x="14" y="50" fill="var(--pca-ink)" font-size="11" font-weight="700">1. 甲板 vs 舱内积载</text>
+        <text x="14" y="67" fill="var(--pca-ink-muted)" font-size="10">甲板负荷按底面积均布</text>
+        <text x="14" y="82" fill="var(--pca-ink-muted)" font-size="10">（培训门槛参考 ~4 t/m²）</text>
+
+        <line x1="14" y1="96" x2="204" y2="96" stroke="var(--pca-border)" stroke-width="1" />
+        <text x="14" y="116" fill="var(--pca-ink)" font-size="11" font-weight="700">2. 船吊与联吊能力</text>
+        <text x="14" y="133" fill="var(--pca-ink-muted)" font-size="10">重吊 MPP 单吊常 150–400t</text>
+        <text x="14" y="148" fill="var(--pca-ink-muted)" font-size="10">双吊联吊可达 500–900t+</text>
+
+        <line x1="14" y1="162" x2="204" y2="162" stroke="var(--pca-border)" stroke-width="1" />
+        <text x="14" y="182" fill="var(--pca-ink)" font-size="11" font-weight="700">3. 关键工程文件</text>
+        <text x="14" y="199" fill="var(--pca-ink-muted)" font-size="10">· 吊装方案 Method Statement</text>
+        <text x="14" y="215" fill="var(--pca-ink-muted)" font-size="10">· 积载与系固图 Stowage Plan</text>
+        <text x="14" y="231" fill="var(--pca-ink-muted)" font-size="10">· 高风险件需 MWS 现场签发</text>
+      </g>
+    </svg>
+  </div>
+  <figcaption class="pca-diagram__cap">
+    注：船吊能力与二层柜载荷随具体船型变化（如 BBC Chartering / SAL Heavy Lift 公开船队参数所示），大件出运前须以该航次船舶规格书（Vessel Particulars）与船东积载图为准。
+  </figcaption>
+</figure>

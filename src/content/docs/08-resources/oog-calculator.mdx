@@ -1,0 +1,23 @@
+---
+title: OOG 与运法初判计算器
+description: 输入长宽高、毛重与货物属性，实时初判普柜/OT/FR/滚装/件杂边界、超限幅度与红线预警。
+sidebar:
+  order: 3
+---
+
+import OogCalculator from '../../../components/OogCalculator.astro';
+import OogEnvelopeDiagram from '../../../components/diagrams/OogEnvelopeDiagram.astro';
+
+本工具用于**接询盘时的 10 秒物理初筛**与**新人建立空间尺寸直觉**。输入货物包装后的实测三边与毛重，即可即时查看体积、底面积均布负荷、预估超限标签（`IG / OW / OH / OL`）以及触发的红线提醒。
+
+<OogCalculator />
+
+## 断面与公路限高参考图
+
+<OogEnvelopeDiagram />
+
+## 怎么配合手册使用
+
+1. **先做物理初筛，再问船东**：把客户发来的包装后尺寸填进上方计算器，先判断大方向是普柜、特种柜、滚装还是件杂。
+2. **任何临界值一律按超限问**：例如高度靠近 `2.3m–2.6m`、长度靠近 `11.65m–12.0m`、宽度靠近 `2.35m` 或 `2.55m`（国内公路超宽线），不要凭经验自行判成普货。
+3. **带电、超重、甲板三类高危信号优先拦截**：一旦触发红线预警，直接点击卡片下方链接跳转到 [锂电池运输红线](../04-energy-storage/battery-dg-rules/)、[特种柜](../03-project-cargo/special-containers/) 或 [滚装与车辆](../03-project-cargo/roro/) 核对完整口径。
