@@ -280,11 +280,11 @@ nav.sidebar a[aria-current='page'] {
 }
 
 [data-has-hero] .hero .tagline {
-  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-size: clamp(1rem, 1.7vw, 1.12rem);
   color: var(--pca-ink-muted);
-  max-width: 58ch;
+  max-width: none;
   line-height: 1.65;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 [data-has-hero] .hero .sl-link-button.primary {

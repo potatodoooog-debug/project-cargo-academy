@@ -111,6 +111,7 @@ const BASE = '/project-cargo-academy/';
     title: string;
     status: 'recommended' | 'possible' | 'unsuitable';
     statusLabel: string;
+    priority: number;
     reason: string;
     href: string;
     linkText: string;
@@ -176,10 +177,10 @@ const BASE = '/project-cargo-academy/';
         const overL_FR = l > 1165 ? Math.round(l - 1165) : 0;
 
         const tags: string[] = [];
-        if (overL_FR > 0) tags.push(`OL +${overL_FR}cm`);
-        if (overW > 0) tags.push(`OW +${overW}cm`);
-        if (!fitsStandard && overH_FR > 0) tags.push(`OH +${overH_FR}cm`);
-        const oogLabel = fitsStandard ? 'IG（标准柜内）' : tags.length ? tags.join(' / ') : '临界待核（按 OOG 问）';
+        if (overL_FR > 0) tags.push(`OL\u00A0+${overL_FR}cm`);
+        if (overW > 0) tags.push(`OW\u00A0+${overW}cm`);
+        if (!fitsStandard && overH_FR > 0) tags.push(`OH\u00A0+${overH_FR}cm`);
+        const oogLabel = fitsStandard ? 'IG（标准柜内）' : tags.length ? tags.join(' · ') : '临界待核（按 OOG 问）';
 
         // OT check
         const otWidthOk = w <= 235 && (!topLift || w <= 223);
@@ -281,6 +282,7 @@ const BASE = '/project-cargo-academy/';
           title: fits20GP ? "标准普柜（20'GP 可装）" : fits40GP ? "标准普柜（40'GP 可装）" : fits40HQ ? "标准高柜（40'HQ 可装）" : '标准集装箱（20GP / 40HQ）',
           status: fitsStandard ? 'recommended' : 'unsuitable',
           statusLabel: fitsStandard ? '首选可行' : '已超限界',
+          priority: fitsStandard ? 1 : 90,
           reason: fitsStandard
             ? `尺寸与重量落在常规干箱参考门尺内（内宽 ~2.35m / 门高 2.29–2.60m）。${dgBattery ? '注意：含锂电不能按普货订舱，必须走 DG 审核！' : '可按标准集装箱询价，若靠近临界值仍须核对包装后实测与装箱余量。'}`
             : `超出标准柜参考门尺或常见载重（宽 ${wm.toFixed(2)}m / 高 ${hm.toFixed(2)}m / 长 ${lm.toFixed(2)}m / 重 ${gw}t），先离开普柜看特种柜或非柜路径。`,
@@ -294,6 +296,7 @@ const BASE = '/project-cargo-academy/';
           title: l <= 589 ? "20'OT 开顶柜" : "40'OT / 40'HC-OT 开顶柜",
           status: otFeasible ? (frFeasible ? 'possible' : 'recommended') : 'unsuitable',
           statusLabel: otFeasible ? '可询候选' : '不适用',
+          priority: otFeasible ? (frFeasible ? 22 : 12) : 92,
           reason: otFeasible
             ? `宽度在箱内范围，可解决超高或顶吊需求（${overH_OT > 0 ? `较 40'OT 内高超高约 ${overH_OT}cm` : '高度接近临界，按超限核实'}）。顶吊需确认顶口净宽（约 2.19–2.23m）及帆布方案。`
             : w > 235
@@ -309,8 +312,9 @@ const BASE = '/project-cargo-academy/';
           title: l <= 563 ? "20'FR 框架柜" : "40'FR 框架柜",
           status: frFeasible ? (bbkPrimary ? 'possible' : 'recommended') : 'unsuitable',
           statusLabel: frFeasible ? (bbkPrimary ? '备选对比' : '重点候选') : '超出建议界',
+          priority: frFeasible ? (bbkPrimary ? 24 : 15) : 94,
           reason: frFeasible
-            ? `${frPanelsUpOk ? '可按挡板竖起（panels up）询价' : '需按挡板放下（panels down）询价'}；预估 ${tags.length ? tags.join(' / ') : 'IG/临界'}。务必同时询 killed slots、吊具/钢丝绳码头吊卸、OOG 免堆与三港吊重。`
+            ? `${frPanelsUpOk ? '可按挡板竖起（panels up）询价' : '需按挡板放下（panels down）询价'}；预估 ${tags.length ? tags.join(' · ') : 'IG/临界'}。务必同时询 killed slots、吊具/钢丝绳码头吊卸、OOG 免堆与三港吊重。`
             : `尺寸或重量超出常见单只框架柜舒适区（宽 ${wm.toFixed(2)}m / 长 ${lm.toFixed(2)}m / 重 ${gw}t），建议直接评估件杂船或 FR 拼床（Bedstead）对比。`,
           href: `${base}03-project-cargo/special-containers/`,
           linkText: '查看 FR 规格、吊具与拼床边界',
@@ -322,6 +326,7 @@ const BASE = '/project-cargo-academy/';
           title: selfPropelled ? 'Ro-Ro 滚装（自驱上船）' : 'Ro-Ro 滚装（Mafi 滚装板）',
           status: roroDirect ? 'recommended' : roroMafi ? 'possible' : 'unsuitable',
           statusLabel: roroDirect ? '强烈推荐' : roroMafi ? '可行备选' : '通常不优先',
+          priority: roroDirect ? 5 : roroMafi ? 26 : 96,
           reason: roroDirect
             ? `可自开上下船，天然适配 PCTC / Ro-Ro 滚装船；核对尾跳板载重（100–375t）、主甲板净高（5.0–6.5m）、坡度离地间隙及装港收货规则。`
             : roroMafi
@@ -337,6 +342,7 @@ const BASE = '/project-cargo-academy/';
           title: gw > 80 ? '重吊船（Heavy Lift）/ MPP 联吊' : 'Breakbulk 件杂 / 多用途船（MPP）',
           status: bbkPrimary ? 'recommended' : fitsStandard ? 'unsuitable' : 'possible',
           statusLabel: bbkPrimary ? '主力方案' : fitsStandard ? '无需件杂' : 'B 方案备份',
+          priority: bbkPrimary ? 8 : fitsStandard ? 98 : 28,
           reason: bbkPrimary
             ? `单件重 ${gw}t 或三边超限明显，应直接走件杂/重吊方案；报价前确认实货/投标性质、装卸条款原文（FLT/FILO/FIO/FIOST）、码头吊重与舱内/甲板要求。`
             : fitsStandard
@@ -346,9 +352,8 @@ const BASE = '/project-cargo-academy/';
           linkText: '查看件杂询盘、计费与条款',
         });
 
-        // Sort: recommended -> possible -> unsuitable
-        const rank = { recommended: 0, possible: 1, unsuitable: 2 };
-        modes.sort((a, b) => rank[a.status] - rank[b.status]);
+        // Sort by engineering priority (强烈推荐 -> 主力方案 -> 重点候选 -> 备选 -> 不适用)
+        modes.sort((a, b) => a.priority - b.priority);
 
         outCbm.textContent = `${cbm.toFixed(2)} CBM`;
         outLoad.textContent = `${deckLoad.toFixed(2)} t/m²`;
