@@ -29,7 +29,8 @@ project-cargo-academy/
 ├── README.md
 ├── astro.config.mjs
 ├── .github/workflows/        Pages 自动部署
-└── src/content/docs/         ← 唯一教材目录
+├── src/components/           首页快速路由、OOG 计算器与 4 张蓝图 SVG
+└── src/content/docs/         ← 唯一教材目录（纯 Markdown + 少量含图解/工具的 MDX）
     ├── 00-overview/          岗位认知 + 使用方式
     ├── 01-trade-basics/      贸易物流基础
     ├── 02-freight-forwarding/ 货代

@@ -88,7 +88,7 @@ const BASE = '/project-cargo-academy/';
   <div class="pca-calc__modes" data-out="modes"></div>
 
   <p class="pca-calc__disclaimer">
-    说明：本工具基于 Hapag-Lloyd 公开集装箱规格、交通运输部 2016/62 号令及站内培训经验门槛进行初筛演练，不输出任何运价。不同船东箱批、甲板承重与口岸吊重存在差异，实操一律以箱体 CSC 铭牌及船东书面确认为准。
+    说明：本工具基于 Hapag-Lloyd 公开集装箱规格、交通运输部 2016/62 号令及站内培训经验门槛进行初筛演练，不输出任何运价。预估 <code>OH</code> 以 40'HC-FR 参考内高 226cm 估算（普通非高框架柜内高更低）；不同船东箱批、甲板承重与口岸吊重存在差异，实操一律以箱体 CSC 铭牌及船东书面确认为准。
   </p>
 </section>
 
@@ -113,14 +113,15 @@ const BASE = '/project-cargo-academy/';
     statusLabel: string;
     priority: number;
     reason: string;
-    href: string;
-    linkText: string;
+    links: { href: string; text: string }[];
   }
 
   interface AlertItem {
     level: 'danger' | 'warn' | 'info';
     title: string;
     body: string;
+    linkHref?: string;
+    linkText?: string;
   }
 
   function initOogCalculators() {
@@ -147,10 +148,20 @@ const BASE = '/project-cargo-academy/';
       const outModes = root.querySelector<HTMLElement>('[data-out="modes"]')!;
 
       const render = () => {
-        const l = Math.max(1, Number(elL.value) || 0);
-        const w = Math.max(1, Number(elW.value) || 0);
-        const h = Math.max(1, Number(elH.value) || 0);
-        const gw = Math.max(0.01, Number(elGW.value) || 0);
+        const l = Number(elL.value);
+        const w = Number(elW.value);
+        const h = Number(elH.value);
+        const gw = Number(elGW.value);
+
+        if (!Number.isFinite(l) || !Number.isFinite(w) || !Number.isFinite(h) || !Number.isFinite(gw) || l <= 0 || w <= 0 || h <= 0 || gw <= 0) {
+          outCbm.textContent = '—';
+          outLoad.textContent = '—';
+          outTag.textContent = '—';
+          outPrimary.textContent = '待输入完整数据';
+          outAlerts.innerHTML = `<div class="pca-calc__alert pca-calc__alert--info"><strong>请输入有效的长、宽、高与毛重</strong><p>四个数值均需大于 0，系统将即时计算体积、均布负荷、超限标签并排查红线。</p></div>`;
+          outModes.innerHTML = '';
+          return;
+        }
 
         const topLift = flTop.checked;
         const selfPropelled = flSelf.checked;
@@ -229,6 +240,8 @@ const BASE = '/project-cargo-academy/';
             level: 'danger',
             title: '锂电池 / DG 强制红线已触发',
             body: '资料不齐（UN 编号、SDS、UN38.3、适运证明、危包证、SOC）严禁订舱与锁期；按「OOG/重件 + DG」双流程并行评估。',
+            linkHref: `${base}04-energy-storage/battery-dg-rules/`,
+            linkText: '查看锂电池运输红线',
           });
         }
         // Road over-dimension check (MOT 2016/62: H > 4.0m with ~1.15m trailer deck, W > 2.55m, L > 18.1m)
@@ -242,13 +255,17 @@ const BASE = '/project-cargo-academy/';
             level: 'warn',
             title: '国内公路段触发超限红线（交通运输部 62 号令）',
             body: `${reasons.join('；')}。须提前核实低板车/轴线车、桥梁限高与大件运输许可。`,
+            linkHref: `${base}03-project-cargo/lashing-and-road/`,
+            linkText: '查看绑扎与公路超限规则',
           });
         }
         if (l > 1200 || h > 400) {
           alerts.push({
             level: 'warn',
-            title: '大概率无法配舱内（Under Deck）→ 重点核对甲板险',
-            body: '参考口径：长超 ~12m 或高超 ~4m 常只能配甲板（On Deck）。务必书面确认客户接受甲板，并提前核对货运险甲板条款与承运人甲板免责风险。',
+            title: '集装箱 / 框架柜体系大概率无法配舱内（Under Deck）→ 重点核对甲板险',
+            body: '参考口径（针对集装箱箱格）：长超 ~12m 或高超 ~4m 常只能配甲板（On Deck），须书面确认客户接受甲板并如实向保险公司申报甲板积载；若改走件杂船（MPP），则改看目标船的舱口尺寸（Hatch Opening）与底舱净高。',
+            linkHref: `${base}03-project-cargo/risk-insurance-claims/`,
+            linkText: '查看甲板险与海牙-维斯比除外规则',
           });
         }
         if (frPanelsDownOk && w > 208) {
@@ -256,6 +273,16 @@ const BASE = '/project-cargo-academy/';
             level: 'warn',
             title: 'FR 挡板放下吊点遮挡风险',
             body: `当前宽 ${wm.toFixed(2)}m 超过培训口径两吊点间距 ~2.08m，若挡板放下会挡住常规吊点，码头常需改钢丝绳吊装，费用更难估。`,
+          });
+        }
+        if (frFeasible && l > 563 && l < 850 && gw >= 25) {
+          const ratio = Math.round((l / 1165) * 100);
+          alerts.push({
+            level: 'info',
+            title: `40'FR 短支承集中载荷提醒（货长仅占纵梁约 ${ratio}%）`,
+            body: `单件 ${gw}t 集中在 ${lm.toFixed(2)}m 长度内，未达到满长均布（full resting length），框架柜实际许用载荷会显著低于理论上限（49.1t），须向船东复核集中载荷或铺设纵向垫木/钢梁摊薄（Load Spreading）。`,
+            linkHref: `${base}03-project-cargo/special-containers/`,
+            linkText: '查看 FR 支承长度规则',
           });
         }
         if (deckLoad > 4.0) {
@@ -286,11 +313,11 @@ const BASE = '/project-cargo-academy/';
           reason: fitsStandard
             ? `尺寸与重量落在常规干箱参考门尺内（内宽 ~2.35m / 门高 2.29–2.60m）。${dgBattery ? '注意：含锂电不能按普货订舱，必须走 DG 审核！' : '可按标准集装箱询价，若靠近临界值仍须核对包装后实测与装箱余量。'}`
             : `超出标准柜参考门尺或常见载重（宽 ${wm.toFixed(2)}m / 高 ${hm.toFixed(2)}m / 长 ${lm.toFixed(2)}m / 重 ${gw}t），先离开普柜看特种柜或非柜路径。`,
-          href: `${base}02-freight-forwarding/containers/`,
-          linkText: '查看集装箱规格与 VGM',
+          links: [{ href: `${base}02-freight-forwarding/containers/`, text: '查看集装箱规格与 VGM' }],
         });
 
         // 2. Open Top
+        const otRoofTooNarrow = w <= 235 && topLift && w > 223;
         modes.push({
           code: 'OT',
           title: l <= 589 ? "20'OT 开顶柜" : "40'OT / 40'HC-OT 开顶柜",
@@ -301,9 +328,10 @@ const BASE = '/project-cargo-academy/';
             ? `宽度在箱内范围，可解决超高或顶吊需求（${overH_OT > 0 ? `较 40'OT 内高超高约 ${overH_OT}cm` : '高度接近临界，按超限核实'}）。顶吊需确认顶口净宽（约 2.19–2.23m）及帆布方案。`
             : w > 235
               ? `货宽 ${wm.toFixed(2)}m 超过开顶柜内宽（~2.35m），无法装入侧壁之间，需改看 FR 或件杂。`
-              : `超出 OT 长度/重量或高度边界（长 ${lm.toFixed(2)}m / 重 ${gw}t）。`,
-          href: `${base}03-project-cargo/special-containers/`,
-          linkText: '查看特种柜 OT / FR 口径',
+              : otRoofTooNarrow
+                ? `货宽 ${wm.toFixed(2)}m 虽在箱内宽（~2.35m）内，但超过开顶柜顶口净宽（约 2.19–2.23m），无法直接从顶部吊入；须核实能否改门口推进，或换 FR。`
+                : `超出 OT 长度/重量或高度边界（长 ${lm.toFixed(2)}m / 高 ${hm.toFixed(2)}m / 重 ${gw}t）。`,
+          links: [{ href: `${base}03-project-cargo/special-containers/`, text: '查看特种柜 OT / FR 口径' }],
         });
 
         // 3. Flat Rack
@@ -316,8 +344,7 @@ const BASE = '/project-cargo-academy/';
           reason: frFeasible
             ? `${frPanelsUpOk ? '可按挡板竖起（panels up）询价' : '需按挡板放下（panels down）询价'}；预估 ${tags.length ? tags.join(' · ') : 'IG/临界'}。务必同时询 killed slots、吊具/钢丝绳码头吊卸、OOG 免堆与三港吊重。`
             : `尺寸或重量超出常见单只框架柜舒适区（宽 ${wm.toFixed(2)}m / 长 ${lm.toFixed(2)}m / 重 ${gw}t），建议直接评估件杂船或 FR 拼床（Bedstead）对比。`,
-          href: `${base}03-project-cargo/special-containers/`,
-          linkText: '查看 FR 规格、吊具与拼床边界',
+          links: [{ href: `${base}03-project-cargo/special-containers/`, text: '查看 FR 规格、吊具与拼床边界' }],
         });
 
         // 4. Ro-Ro
@@ -332,8 +359,7 @@ const BASE = '/project-cargo-academy/';
             : roroMafi
               ? `静态重件可评估配 Mafi 滚装板（板高 0.6–0.9m，载重 60–200t，计入总重 CGW），注意确认目标航线与装港是否接 Mafi。`
               : `尺寸/重量超过常规滚装主甲板净高或自重限制，或普柜已更经济。`,
-          href: `${base}03-project-cargo/roro/`,
-          linkText: '查看滚装船型、Mafi 与约束',
+          links: [{ href: `${base}03-project-cargo/roro/`, text: '查看滚装船型、Mafi 与约束' }],
         });
 
         // 5. Breakbulk / Heavy Lift
@@ -344,12 +370,14 @@ const BASE = '/project-cargo-academy/';
           statusLabel: bbkPrimary ? '主力方案' : fitsStandard ? '无需件杂' : 'B 方案备份',
           priority: bbkPrimary ? 8 : fitsStandard ? 98 : 28,
           reason: bbkPrimary
-            ? `单件重 ${gw}t 或三边超限明显，应直接走件杂/重吊方案；报价前确认实货/投标性质、装卸条款原文（FLT/FILO/FIO/FIOST）、码头吊重与舱内/甲板要求。`
+            ? `单件重 ${gw}t 或三边超限明显，应直接走件杂/重吊方案；报价前确认实货/投标性质、装卸条款原文（FLT/FILO/FIO/FIOST）、码头吊重、舱口尺寸与 MWS 检验要求。`
             : fitsStandard
               ? '标准集装箱已可承运，单件通常无需走件杂船。'
               : '可与特种柜（FR/OT）并列做方案 A/B 对比，多件混装或 OOG 附加费过高时件杂更具性价比。',
-          href: `${base}03-project-cargo/bbk-inquiry/`,
-          linkText: '查看件杂询盘、计费与条款',
+          links: [
+            { href: `${base}03-project-cargo/bbk-inquiry/`, text: '件杂询盘与计费' },
+            { href: `${base}03-project-cargo/bbk-vessels-and-chartering/`, text: '重吊船型与租船条款' },
+          ],
         });
 
         // Sort by engineering priority (强烈推荐 -> 主力方案 -> 重点候选 -> 备选 -> 不适用)
@@ -366,7 +394,7 @@ const BASE = '/project-cargo-academy/';
                 (a) => `
               <div class="pca-calc__alert pca-calc__alert--${a.level}">
                 <strong>${a.title}</strong>
-                <p>${a.body}</p>
+                <p>${a.body}${a.linkHref ? ` <a href="${a.linkHref}">${a.linkText} →</a>` : ''}</p>
               </div>`
               )
               .join('')
@@ -382,7 +410,9 @@ const BASE = '/project-cargo-academy/';
                 <span class="pca-calc__mode-pill">${m.statusLabel}</span>
               </div>
               <p>${m.reason}</p>
-              <a class="pca-calc__mode-link" href="${m.href}">${m.linkText} →</a>
+              <div class="pca-calc__mode-links">
+                ${m.links.map((lk) => `<a class="pca-calc__mode-link" href="${lk.href}">${lk.text} →</a>`).join('')}
+              </div>
             </article>`
           )
           .join('');

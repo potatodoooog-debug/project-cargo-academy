@@ -279,8 +279,12 @@ nav.sidebar a[aria-current='page'] {
   text-wrap: balance;
 }
 
+[data-has-hero] .hero .copy {
+  max-width: min(100%, 48rem);
+}
+
 [data-has-hero] .hero .tagline {
-  font-size: clamp(1rem, 1.7vw, 1.12rem);
+  font-size: clamp(0.95rem, 1.35vw, 1.05rem);
   color: var(--pca-ink-muted);
   max-width: none;
   line-height: 1.65;
@@ -1101,6 +1105,25 @@ nav.sidebar a[aria-current='page'] {
   color: var(--pca-ink);
 }
 
+.pca-calc__alert a {
+  display: inline-block;
+  margin-left: 0.25rem;
+  font-weight: 650;
+  color: var(--pca-rust);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.pca-calc__alert--danger a {
+  color: var(--pca-danger);
+}
+
+.pca-calc__mode-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+}
+
 .pca-calc__modes {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1236,6 +1259,16 @@ nav.sidebar a[aria-current='page'] {
 
   .pca-calc {
     padding: 1rem 0.95rem;
+  }
+
+  .pca-diagram__bar::after {
+    content: "← 左右滑动查看完整工程蓝图 →";
+    display: block;
+    width: 100%;
+    font-family: var(--sl-font-mono);
+    font-size: 0.72rem;
+    color: var(--pca-rust);
+    opacity: 0.9;
   }
 
   .pca-router {

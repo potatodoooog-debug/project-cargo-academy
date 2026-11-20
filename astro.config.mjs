@@ -14,6 +14,12 @@ export default defineConfig({
       locales: {
         root: { label: '简体中文', lang: 'zh-CN' },
       },
+      head: [
+        {
+          tag: 'script',
+          content: `(()=>{let opened=[];window.addEventListener('beforeprint',()=>{opened=[];document.querySelectorAll('details.pca-recall-answer:not([open])').forEach(d=>{d.open=true;opened.push(d);});});window.addEventListener('afterprint',()=>{opened.forEach(d=>{d.open=false;});opened=[];});})();`,
+        },
+      ],
       customCss: ['./src/styles/custom.css'],
       sidebar: [
         { label: '岗位认知与学习地图', items: [{ autogenerate: { directory: '00-overview' } }] },

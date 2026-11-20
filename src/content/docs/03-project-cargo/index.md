@@ -28,17 +28,15 @@ sidebar:
 8. [项目运输方案怎么讲](./solution-framing/)
 9. [项目货风险、甲板险与索赔防护](./risk-insurance-claims/)
 
-## 与培训清单的对应
+## 高频专题与本站落点
 
-工程物流常见专题与本站落点对应：
-
-| 培训项 | 本站落点 |
+| 高频专题 | 本站落点 |
 |---|---|
-| Breakbulk 业务 | bbk-oog-basics + bbk-inquiry |
-| OOG/BBK 业务 | bbk-oog-basics + special-containers |
-| 拜访船公司 | 结合 08 资源，用本模块问题清单去问 |
-| 铁路公路供应商 | lashing-and-road |
-| 项目物流同行交流 | solution-framing + 07 案例 |
+| OOG 特种柜与尺寸初筛 | special-containers + 08 OOG 计算器 |
+| Breakbulk 件杂、重吊与租船条款 | bbk-oog-basics + bbk-inquiry + bbk-vessels-and-chartering |
+| Ro-Ro 滚装与 Mafi 作业 | roro + 07 车辆案例模式 |
+| 绑扎加固、公路超限与港口操作 | lashing-and-road + port-ops + 08 件杂码头吊重 |
+| 方案汇报、甲板险与索赔防护 | solution-framing + risk-insurance-claims + 07 案例库 |
 
 ## 待继续补充（迭代池）
 
