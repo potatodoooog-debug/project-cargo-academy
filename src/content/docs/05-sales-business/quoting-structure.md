@@ -56,7 +56,12 @@ sidebar:
 
 **复习题：** 特种柜的堆存成本为什么不能直接照搬普柜经验？
 
+<details class="pca-recall-answer">
+<summary>点击核对答案</summary>
+
 答：按本页培训口径，OOG 常常没有普柜那种免堆。
+
+</details>
 
 ## 练习
 

@@ -2,7 +2,7 @@
 title: 件杂港口操作
 description: 甲板负荷、华南与天津件杂操作口径，以及地面费、免堆期等经验。
 sidebar:
-  order: 5
+  order: 6
 ---
 
 > 整理自内部培训幻灯片（2026-11）。操作以船东书面和港口当时规定为准。
@@ -71,4 +71,9 @@ sidebar:
 
 **复习题：** 货主问超期堆存找谁结？
 
+<details class="pca-recall-answer">
+<summary>点击核对答案</summary>
+
 答：找码头，不找船公司。
+
+</details>

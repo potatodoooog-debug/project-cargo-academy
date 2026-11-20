@@ -21,10 +21,12 @@ sidebar:
 1. [Breakbulk 与 OOG 基础](./bbk-oog-basics/) — **先读**
 2. [特种柜 FR / OT / Platform](./special-containers/)
 3. [件杂货询盘与计费](./bbk-inquiry/)
-4. [绑扎加固与公路段](./lashing-and-road/)
-5. [件杂港口操作](./port-ops/)
-6. [滚装与车辆](./roro/)
-7. [项目运输方案怎么讲](./solution-framing/)
+4. [件杂船型、吊装与租船条款](./bbk-vessels-and-chartering/)
+5. [绑扎加固与公路段](./lashing-and-road/)
+6. [件杂港口操作](./port-ops/)
+7. [滚装与车辆](./roro/)
+8. [项目运输方案怎么讲](./solution-framing/)
+9. [项目货风险、甲板险与索赔防护](./risk-insurance-claims/)
 
 ## 与培训清单的对应
 

@@ -69,4 +69,9 @@ sidebar:
 
 **复习题：** 一批尺寸不齐的混装货，计费更可能按吨、按方，还是包干？还要向客户要哪两样东西？
 
+<details class="pca-recall-answer">
+<summary>点击核对答案</summary>
+
 答：按方（按体积 CBM）；要 Excel 装箱单和照片。
+
+</details>

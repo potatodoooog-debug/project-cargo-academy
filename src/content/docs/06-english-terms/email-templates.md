@@ -152,4 +152,9 @@ Best regards,
 
 **复习题：** 客户只发来一句 “Need freight from Shenzhen to Jakarta next week, 1 battery cabinet”，应该先套用哪两个模板的逻辑？
 
+<details class="pca-recall-answer">
+<summary>点击核对答案</summary>
+
 答：先按模板 2 要齐基础尺寸/重量/装箱单/贸易术语，并叠加模板 5 的危险品合规闸门（明确资料不齐不能订舱）。
+
+</details>

@@ -54,4 +54,9 @@ sidebar:
 
 **复习题：** 客户在展台当场追问「40 尺框架柜去东南亚大概多少钱」，怎么用英文稳妥回应？
 
+<details class="pca-recall-answer">
+<summary>点击核对答案</summary>
+
 答：说明 OOG 费用取决于最终包装尺寸、超限幅度和船东确认（`OOG pricing depends on final packed dimensions, out-of-gauge dimensions, and carrier approval`），请对方发装箱单与照片后在 1–2 个工作日内给路径建议。
+
+</details>

@@ -53,6 +53,15 @@ sidebar:
 | survey report | 监装报告 |
 | pre-stowage meeting | 船前会 |
 | low chassis | 低板车 |
+| CSC Plate | 集装箱安全公约铭牌（标明单箱核定总重与皮重上限） |
+| OH Frame（Overheight Frame） | 超高框架吊具（供超高特种柜挂接常规吊具使用） |
+| Bedstead | 框架柜拼床（多只挡板放下的 FR 并排作底床承运大件） |
+| Tweendeck | 二层柜（多用途船可拆装调节的中间甲板） |
+| Tandem Lift | 联吊（双吊机配平衡梁同步起吊超重单件） |
+| Spreader Bar | 平衡梁（吊装索具间分散受力、防挤压货物的横梁） |
+| Method Statement | 吊装/运输施工方案 |
+| PCTC / ConRo | 纯汽车卡车滚装船 / 集装箱滚装混合船 |
+| Stern Ramp / Hoistable Deck | 尾跳板 / 可升降活动甲板 |
 
 ## 操作与报价
 
@@ -72,6 +81,16 @@ sidebar:
 | budgetary | 预算询盘 |
 | Pivot | 一块板的保底计费公斤数 |
 | DGM report | 空运部分锂电编号另要的报告 |
+| MWS（Marine Warranty Surveyor） | 海事担保检验师（通常受保险人委托审签高风险重大件操作） |
+| GENCON | BIMCO 通用程租合同范本 |
+| CONLINEBOOKING | BIMCO 班轮订舱单范本 |
+| NOR（Notice of Readiness） | 装卸准备就绪通知书 |
+| Laytime | 许可装卸时间 |
+| Demurrage / Despatch | 滞期费 / 速遣费（集装箱场景下 D&D 常指滞港与滞箱费） |
+| HLS / ELS | 超重附加费（Heavy Lift Surcharge）/ 超长附加费（Extra Length Surcharge） |
+| Joint Survey | 联合检验（货方、保险方与承运人共同定损） |
+| Notice of Protest | 抗议书 / 货损书面保留通知 |
+| Hague-Visby Rules | 海牙-维斯比规则（提单下海运承运人责任与限额国际公约） |
 
 ## 新能源 / 储能
 

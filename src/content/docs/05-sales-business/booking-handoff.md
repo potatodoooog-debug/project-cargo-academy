@@ -53,4 +53,9 @@ sidebar:
 
 **复习题：** 框架柜（FR）装箱完成后，需不需要提交集装箱核实总重（VGM）？
 
+<details class="pca-recall-answer">
+<summary>点击核对答案</summary>
+
 答：需要。框架柜和开顶柜按集装箱办理 VGM；只有件杂货按件提供重量，不使用集装箱 VGM 规则。
+
+</details>

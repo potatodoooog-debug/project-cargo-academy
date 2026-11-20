@@ -68,4 +68,9 @@ sidebar:
 
 **复习题：** 有人问天津件杂码头单机多少吨？
 
+<details class="pca-recall-answer">
+<summary>点击核对答案</summary>
+
 答：本页没有这个数，不要编。
+
+</details>

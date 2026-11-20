@@ -47,7 +47,8 @@ export const CARGO_ROUTES: CargoRoute[] = [
     tone: 'accent',
     links: [
       { label: '件杂货询盘与计费', href: `${BASE}03-project-cargo/bbk-inquiry/`, tag: '询盘计费' },
-      // V3-SLOT: bbk-chartering -> add 03-project-cargo/bbk-vessels-and-chartering/ & 03-project-cargo/risk-insurance-claims/
+      { label: '件杂船型、吊装与租船条款', href: `${BASE}03-project-cargo/bbk-vessels-and-chartering/`, tag: '船型租船' },
+      { label: '项目货风险、甲板险与索赔', href: `${BASE}03-project-cargo/risk-insurance-claims/`, tag: '风险索赔' },
       { label: '中国主要件杂码头吊重', href: `${BASE}08-resources/bb-terminals/`, tag: '吊重速查' },
       { label: '件杂港口操作', href: `${BASE}03-project-cargo/port-ops/`, tag: '港口经验' },
     ],

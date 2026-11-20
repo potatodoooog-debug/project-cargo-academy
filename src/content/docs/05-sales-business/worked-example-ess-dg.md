@@ -79,4 +79,9 @@ sidebar:
 
 **复习题：** 客户催你「下周必须出印尼，先订舱，文件后补」，按本页和红线页口径该如何处理？
 
+<details class="pca-recall-answer">
+<summary>点击核对答案</summary>
+
 答：拒绝先订舱，停在锂电池红线；发缺失资料清单（含尺寸重量、UN 编号、SDS、UN38.3、SOC 等），说明文件齐后才能推进路径与订舱确认。
+
+</details>

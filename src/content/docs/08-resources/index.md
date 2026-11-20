@@ -11,6 +11,7 @@ sidebar:
 
 - [展会日历](./exhibitions/) — 储能 + 工程物流展 + 代理网络会议
 - [中国主要件杂码头吊重](./bb-terminals/) — 培训初表，出发前再核对
+- [OOG 与运法初判计算器](./oog-calculator/) — 输尺寸毛重 10 秒初判柜型、超限幅度与红线
 
 ## 行业学习资源
 
@@ -20,7 +21,7 @@ sidebar:
 
 ## 公开入口
 
-核对日期 2026-11-16。性质只分官方和第三方。
+核对日期 2026-11-20。性质只分官方、船东公开资料与国际行业机构。
 
 | 类型 | 入口 | 性质 |
 |---|---|---|
@@ -35,5 +36,10 @@ sidebar:
 | 船上系固 | [IMO：CSS Code](https://www.imo.org/en/OurWork/Safety/Pages/CSS-Code.aspx) | 官方说明，规则全文向 IMO 购买 |
 | 旧机电检验 | [检验监督管理办法](https://www.gov.cn/zhengce/2018-11/23/content_5723434.htm) | 官方 |
 | 锂电池空运 | [IATA 情况说明](https://www.iata.org/en/iata-repository/pressroom/fact-sheets/fact-sheet-lithium-batteries) | 官方情况说明，不是 DGR 全文 |
+| 特种柜规格参考 | [Hapag-Lloyd 集装箱规格](https://www.hapag-lloyd.com/en/services-information/cargo-fleet/container.html) | 船东官方公开规格 |
+| 滚装与重件规范 | [Höegh Autoliners 船队与重件](https://www.hoeghautoliners.com/) | 船东官方公开资料 |
+| 滚装与物流方案 | [Wallenius Wilhelmsen](https://www.walleniuswilhelmsen.com/) | 船东官方公开资料 |
+| 租船与订舱范本 | [BIMCO 合同与条款](https://www.bimco.org/contracts-and-clauses) | 国际航运权威机构 |
+| 重吊与多用途船 | [BBC Chartering](https://www.bbc-chartering.com/) | 重吊船东官方公开资料 |
 
 船公司和集装箱码头的订舱系统不集中收进本表。要查某一家，用该公司自己的 cargo 或 schedule 页，本站不代列。

@@ -51,4 +51,9 @@ sidebar:
 
 **复习题：** 灭火器（UN1044）和一氧化碳（UN1016）哪一个能按页内口径谈拼箱？
 
+<details class="pca-recall-answer">
+<summary>点击核对答案</summary>
+
 答：只有 2.2 的灭火器，且只写上海和香港。
+
+</details>

@@ -76,4 +76,9 @@ EQ：重货和泡货在同一块板上配平。
 
 **复习题：** 6 立方米、毛重 800 公斤，体积重是多少，计费重取哪个？
 
+<details class="pca-recall-answer">
+<summary>点击核对答案</summary>
+
 答：体积重 1002 公斤，计费重取 1002。
+
+</details>

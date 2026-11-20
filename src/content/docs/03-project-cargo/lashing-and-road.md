@@ -2,7 +2,7 @@
 title: 绑扎加固与公路段
 description: Lashing、重心、厂到港公路超限——项目货最容易翻车的两段。
 sidebar:
-  order: 4
+  order: 5
 ---
 
 ## 为什么销售也要懂绑扎
@@ -68,7 +68,12 @@ CTU Code 讨论货物运输组件里由谁装箱绑扎；CSS Code 讨论船上�
 
 **复习题：** CTU Code 和 CSS Code 分别管哪一段？
 
+<details class="pca-recall-answer">
+<summary>点击核对答案</summary>
+
 答：CTU Code 管货物运输组件里的装箱与绑扎责任（非强制守则）；CSS Code 管船上的积载和系固。
+
+</details>
 
 ## 新人跟单观察清单（跟一次车/一次装货就勾）
 
