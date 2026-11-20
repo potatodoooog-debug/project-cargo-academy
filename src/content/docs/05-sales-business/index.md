@@ -17,6 +17,8 @@ sidebar:
 2. [展会获客 SOP](./exhibition-sop/)  
 3. [报价结构](./quoting-structure/)  
 4. [一票货怎么走](./worked-example/) — 虚构货走完一票  
+5. [订舱与执行交接清单](./booking-handoff/) — 确认后怎么落单  
+6. [一票储能货怎么走](./worked-example-ess-dg/) — 虚构带电储能柜演练  
 
 ## 能力目标
 

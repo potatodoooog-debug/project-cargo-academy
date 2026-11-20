@@ -63,8 +63,7 @@ export const CARGO_ROUTES: CargoRoute[] = [
     links: [
       { label: '锂电池运输红线', href: `${BASE}04-energy-storage/battery-dg-rules/`, tag: '必读红线' },
       { label: '储能产品与物流视角', href: `${BASE}04-energy-storage/product-basics/`, tag: '产品直觉' },
-      // V2-SLOT: ess-worked-example -> replace with 05-sales-business/worked-example-ess-dg/
-      { label: '目标市场与认证直觉', href: `${BASE}04-energy-storage/markets-certs/`, tag: '市场认证' },
+      { label: '一票储能货怎么走（带电演练）', href: `${BASE}05-sales-business/worked-example-ess-dg/`, tag: '演练' },
     ],
   },
   {
@@ -126,7 +125,8 @@ export const CARGO_ROUTES: CargoRoute[] = [
     links: [
       { label: '项目运输方案怎么讲', href: `${BASE}03-project-cargo/solution-framing/`, tag: '方案结构' },
       { label: '报价结构', href: `${BASE}05-sales-business/quoting-structure/`, tag: '分项拆解' },
-      // V2-SLOT: booking-handoff -> add 05-sales-business/booking-handoff/ & 07-case-library/shipment-checklist/
+      { label: '订舱与执行交接清单', href: `${BASE}05-sales-business/booking-handoff/`, tag: '订舱交接' },
+      { label: '一票项目货全流程 Checklist', href: `${BASE}07-case-library/shipment-checklist/`, tag: '全流程' },
       { label: '询价反问清单', href: `${BASE}05-sales-business/inquiry-checklist/`, tag: '防翻车' },
     ],
   },
@@ -143,7 +143,8 @@ export const CARGO_ROUTES: CargoRoute[] = [
     links: [
       { label: '展会获客 SOP', href: `${BASE}05-sales-business/exhibition-sop/`, tag: '展会动作' },
       { label: '展会日历', href: `${BASE}08-resources/exhibitions/`, tag: '年度排期' },
-      // V2-SLOT: english-templates -> add 06-english-terms/email-templates/ & 06-english-terms/call-phrases/
+      { label: '商务英文邮件模板', href: `${BASE}06-english-terms/email-templates/`, tag: '邮件模板' },
+      { label: '电话与展会英文用语', href: `${BASE}06-english-terms/call-phrases/`, tag: '高频口语' },
       { label: '行业英文术语表', href: `${BASE}06-english-terms/glossary/`, tag: '英文速查' },
     ],
   },

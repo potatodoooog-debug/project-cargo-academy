@@ -10,3 +10,5 @@ sidebar:
 ## 建议阅读
 
 - [行业英文术语表](./glossary/)
+- [商务英文邮件模板](./email-templates/)
+- [电话与展会英文用语](./call-phrases/)

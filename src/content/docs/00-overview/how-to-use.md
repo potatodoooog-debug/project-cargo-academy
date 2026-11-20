@@ -24,14 +24,17 @@ sidebar:
 |---|---|
 | 客户刚询价 | [询价清单](../05-sales-business/inquiry-checklist/)、[件杂询盘](../03-project-cargo/bbk-inquiry/)（若像项目货） |
 | 想走一遍完整询价 | [一票货怎么走](../05-sales-business/worked-example/)，页内再链到询价清单、特种柜和报价结构 |
+| 想走一遍储能带电询价 | [一票储能货怎么走](../05-sales-business/worked-example-ess-dg/)、[锂电池红线](../04-energy-storage/battery-dg-rules/) |
 | 判断走 OT / FR / 件杂 | [特种柜](../03-project-cargo/special-containers/)、[Breakbulk 基础](../03-project-cargo/bbk-oog-basics/)、[方案怎么讲](../03-project-cargo/solution-framing/) |
 | 含锂电池或储能柜 | [锂电池红线](../04-energy-storage/battery-dg-rules/)、[储能产品](../04-energy-storage/product-basics/) |
 | 气体、灭火器、喷雾剂 | [2 类危险品](../01-trade-basics/dg-class-2/) |
 | 样品或小件走空运 | [空运基础](../02-freight-forwarding/air-basics/)，锂电再跳 [红线页](../04-energy-storage/battery-dg-rules/) |
 | 报价只讲结构 | [报价结构](../05-sales-business/quoting-structure/) |
+| 客户确认了要下订舱单 | [订舱交接清单](../05-sales-business/booking-handoff/)、[全流程 Checklist](../07-case-library/shipment-checklist/) |
 | 这港吊不吊得动 | [件杂码头](../08-resources/bb-terminals/)、[港口操作](../03-project-cargo/port-ops/) |
 | 车辆、滚装 | [滚装](../03-project-cargo/roro/) |
-| 展会 | [展会日历](../08-resources/exhibitions/)、[展会 SOP](../05-sales-business/exhibition-sop/) |
+| 展会 | [展会日历](../08-resources/exhibitions/)、[展会 SOP](../05-sales-business/exhibition-sop/)、[展会复盘模板](../07-case-library/exhibition-review-template/) |
+| 要写英文跟进或询价邮件 | [英文邮件模板](../06-english-terms/email-templates/)、[电话与展会用语](../06-english-terms/call-phrases/) |
 | 忘了英文 | [术语表](../06-english-terms/glossary/) |
 
 ## 怎么往回写
