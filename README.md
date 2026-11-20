@@ -14,7 +14,7 @@
 ## 本地开发
 
 ```bash
-cd /d/projects/project-cargo-academy
+cd /Users/elriclee/Projects/project-cargo-academy   # 按实际克隆路径调整
 pnpm install        # 首次
 pnpm dev            # http://localhost:4321/project-cargo-academy/
 pnpm build          # 输出 dist/
@@ -24,7 +24,7 @@ pnpm preview
 ## 目录结构
 
 ```
-D:\projects\project-cargo-academy\
+project-cargo-academy/
 ├── DESIGN.md                 设计决策（为什么 Web、模块如何拆）
 ├── README.md
 ├── astro.config.mjs
@@ -41,8 +41,11 @@ D:\projects\project-cargo-academy\
     └── 08-resources/         展会与外链
 ```
 
-原始岗位 PPT 建议仍放在 `D:\work files\`，与本仓库分离。  
-真实客户/运价可建 `D:\work files\pca-private\`（不要 push 到公开库）。
+本机三层目录约定：
+
+- 原始岗位资料（PDF / PPTX / 价格表 / 客户原件）单独归档，不进 Git；
+- 真实客户档案、实票复盘、运价基准、公司内部口径放本地私密目录 `pca-private/`（与本公开库物理分离，不要 push 到公开库）；
+- 通用岗位知识、脱敏模板与模式案例沉淀在本公开库。
 
 ## 如何迭代
 
